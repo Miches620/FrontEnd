@@ -1,0 +1,42 @@
+{
+    "educacion":[
+        {
+            "titulo":"Tecnico Quimico",
+            "institucion":"Escuela Tecnica N° 1 Eduardo Guillermo Oliver, Lujan",
+            "anio":2008,
+            "web":"https://tecnica1-lujan.edu.ar/"
+        },
+        {
+            "titulo":"Reparador de PC",
+            "institucion":"Centro de formacion profesional 403, Lujan",
+            "anio":2014,
+            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+        },
+        {
+            "titulo":"Diseñador Proyectual 3D",
+            "institucion":"Centro de formacion profesional 403, Lujan",
+            "anio":2015,
+            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+        },
+        {
+            "titulo":"Operador y Diseñador 3D",
+            "institucion":"Centro de formacion profesional 403, Lujan",
+            "anio":2016,
+            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+        },
+        {
+            "titulo":"Desarrollador en Electronica Digital",
+            "institucion":"Centro de formacion profesional 403, Lujan",
+            "anio":2017,
+            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+        },
+        {
+            "titulo":"Programador de Sistemas Digitales(Arduino)",
+            "institucion":"Centro de formacion profesional 403, Lujan",
+            "anio":2018,
+            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+        }
+    ]
+
+    
+}

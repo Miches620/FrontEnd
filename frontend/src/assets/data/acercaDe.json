@@ -1,0 +1,9 @@
+{
+	"persona": {
+		"img": "./assets/imagenes/about.jpg",
+		"nombre": "Santiago Michelena",
+		"edad": 31,
+		"titulo": "Full Stack Developer Jr"
+		
+	}
+}

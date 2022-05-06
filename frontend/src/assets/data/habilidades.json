@@ -1,0 +1,41 @@
+{
+	"habilidades":[{
+			"habilidadesBlandas": [{
+					"habilidad":"Trabajo en Equipo",
+					"porcentaje":90
+				},
+				{
+					"habilidad":"Organizacion",
+					"porcentaje":80
+				},
+				{
+					"habilidad":"Comunicacion",
+					"porcentaje":95
+				},
+				{
+					"habilidad":"Liderazgo",
+					"porcentaje":75
+				}
+			]
+		},
+		{
+			"habilidadesDuras": [{
+					"habilidad":"Programacion",
+					"porcentaje":70
+				},
+				{
+					"habilidad":"Idiomas",
+					"porcentaje":70
+				},
+				{
+					"habilidad":"Diseño Grafico",
+					"porcentaje":65
+				},
+				{
+					"habilidad":"Diseño 3D",
+					"porcentaje":70
+				}
+			]
+		}
+]
+}
