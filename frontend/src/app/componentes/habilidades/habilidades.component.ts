@@ -8,6 +8,7 @@ import { ObtenerDatosService } from 'src/app/servicios/obtener-datos.service';
 export class HabilidadesComponent implements OnInit {
 hBlandas:any
 hDuras:any
+usuarioAutentificado:boolean=false
   constructor(private servicio:ObtenerDatosService) { }
 
   ngOnInit(): void {

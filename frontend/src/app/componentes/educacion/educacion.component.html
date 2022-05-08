@@ -1,80 +1,20 @@
 <!-- educacion-->
 <section id="educacion">
     <div class="container">
-        <h1 class="text-center">Educacion <button id="editarEducacion"><i class='fas servicesIcon fa-feather'></i></button></h1>
+        <h1 class="text-center">Educacion <button *ngIf="usuarioAutentificado" id="editarEducacion"><i class='fas servicesIcon fa-feather'></i></button></h1>
         <div class="row">
-            <div class="col-lg-4 mt-4">
+            <div *ngFor="let item of educacion" class="col-lg-4 mt-4">
                 <div class="card servicesText">
                     <div class="card-body">
-                      <i class='fas servicesIcon fa-flask'></i>
-                      <h4 class="card-title mt-3" id="titulo1">{{educacion[0].titulo}}</h4>
-                      <p class="card-text mt-3 text-center"id="institucion1">{{educacion[0].institucion}}</p>
-                      <p class="card-text mt-3 text-center"id="anio1">{{educacion[0].anio}}</p>
-                      <p class="card-text mt-3 text-center"><a  id="web1" href="{{educacion[0].web}}">{{educacion[0].web}}</a></p>
+                      <i class='fas servicesIcon {{item.icono}}'></i>
+                      <h4 class="card-title mt-3" id="titulo1">{{item.titulo}}</h4>
+                      <p class="card-text mt-3 text-center"id="institucion1">{{item.institucion}}</p>
+                      <p class="card-text mt-3 text-center"id="anio1">{{item.anio}}</p>
+                      <p class="card-text mt-3 text-center"><a  id="web1" href="{{item.web}}">{{item.web}}</a></p>
                     </div>
                 </div>  
             </div>
-            <div class="col-lg-4 mt-4">
-                <div class="card servicesText">
-                    <div class="card-body">
-                        <i class='fas servicesIcon fa-wrench'></i>
-                        <h4 class="card-title mt-3"id="titulo2">{{educacion[1].titulo}}</h4>
-                        <p class="card-text mt-3 text-center"id="institucion2">{{educacion[1].institucion}}</p>
-                        <p class="card-text mt-3 text-center"id="anio2">{{educacion[1].anio}}</p>
-                        <p class="card-text mt-3 text-center"><a  id="web2" href="{{educacion[1].web}}">{{educacion[1].web}}</a></p>
-                    </div>
-                </div>  
-            </div>
-  
-            <div class="col-lg-4 mt-4">
-                <div class="card servicesText">
-                    <div class="card-body">
-                        <i class='far servicesIcon fa-object-ungroup'></i>
-                        <h4 class="card-title mt-3"id="titulo3">{{educacion[2].titulo}}</h4>
-                        <p class="card-text mt-3 text-center"id="institucion3">{{educacion[2].institucion}}</p>
-                        <p class="card-text mt-3 text-center"id="anio3">{{educacion[2].anio}}</p>
-                        <p class="card-text mt-3 text-center"><a  id="web2" href="{{educacion[1].web}}">{{educacion[1].web}}</a></p>
-                    </div>
-                </div>  
-            </div>
-        </div>
-  
-        <div class="row">
-            <div class="col-lg-4 mt-4">
-                <div class="card servicesText">
-                    <div class="card-body">
-                        <i class='fas servicesIcon fa-frog'></i>
-                        <h4 class="card-title mt-3"id="titulo4">{{educacion[3].titulo}}</h4>
-                        <p class="card-text mt-3 text-center"id="institucion4">{{educacion[3].institucion}}</p>
-                        <p class="card-text mt-3 text-center"id="anio4">{{educacion[3].anio}}</p>
-                        <p class="card-text mt-3 text-center"><a  id="web2" href="{{educacion[1].web}}">{{educacion[1].web}}</a></p>
-                    </div>
-                </div>  
-            </div>
-  
-            <div class="col-lg-4 mt-4">
-                <div class="card servicesText">
-                    <div class="card-body">
-                        <i class='fas servicesIcon fa-plug'></i>
-                        <h4 class="card-title mt-3"id="titulo5">{{educacion[4].titulo}}</h4>
-                        <p class="card-text mt-3 text-center"id="institucion5">{{educacion[4].institucion}}</p>
-                        <p class="card-text mt-3 text-center"id="anio5">{{educacion[4].anio}}</p>
-                        <p class="card-text mt-3 text-center"><a  id="web2" href="{{educacion[1].web}}">{{educacion[1].web}}</a></p>
-                    </div>
-                </div>  
-            </div>
-  
-            <div class="col-lg-4 mt-4">
-                <div class="card servicesText">
-                    <div class="card-body">
-                        <i class='fas servicesIcon fa-microchip'></i>
-                        <h4 class="card-title mt-3"id="titulo6">{{educacion[5].titulo}}</h4>
-                        <p class="card-text mt-3 text-center"id="institucion6">{{educacion[5].institucion}}</p>
-                        <p class="card-text mt-3 text-center"id="anio6">{{educacion[5].anio}}</p>
-                        <p class="card-text mt-3 text-center"><a  id="web2" href="{{educacion[1].web}}">{{educacion[1].web}}</a></p>
-                    </div>
-                </div>  
-            </div>
+            
         </div>
     </div>
   </section>

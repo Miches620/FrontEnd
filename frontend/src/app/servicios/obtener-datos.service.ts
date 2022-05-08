@@ -26,5 +26,9 @@ export class ObtenerDatosService {
     obtenerHabilidades():Observable<any>{
       return this.http.get('./assets/data/habilidades.json')
         }
+
+    obtenerProyectos():Observable<any>{
+      return this.http.get('./assets/data/proyectos.json')
+        }
 }
 

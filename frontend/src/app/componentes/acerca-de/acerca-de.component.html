@@ -1,7 +1,7 @@
 <!-- acercade-->
 <section id="acercade">
     <div class="container mt-4 pt-4">
-        <h1 class="text-center">Acerca de mi <button id="editarAcercaDe"><i class='fas servicesIcon fa-feather'></i></button></h1>
+        <h1 class="text-center">Acerca de mi <button *ngIf="usuarioAutentificado" id="editarAcercaDe"><i class='fas servicesIcon fa-feather'></i></button></h1>
         <div class="row mt-4">
             <div class="col-lg-4">
                 <img [src]="persona.img" class= "imageAboutPage" alt="yo">
