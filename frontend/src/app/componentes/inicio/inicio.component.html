@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top navbarScroll" style="background-color: #33bbeb;">
     <div class="container">
-        <a class="navbar-brand" id="login" href="#"><img src="./assets/imagenes/AP.png" alt="#ArgentinaPrograma"style="width:120px; height:40px"></a>
+        <a class="navbar-brand" id="login" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><img src="./assets/imagenes/AP.png" alt="#ArgentinaPrograma"style="width:120px; height:40px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style="color:#fff">≡</span>
         </button>
@@ -44,3 +44,32 @@
       </div>
   </div>
 </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Acceso de Administrador</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="limpiarFormulario()"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formulario">
+                <div class="mb-3">
+                  <label for="loginUsuario" class="form-label">Usuario</label>
+                  <input type="text" class="form-control" id="loginUsuario" formControlName="ingresoUsuario">
+                  <div id="loginUser" class="form-text">usuario: admin || pass:12345678</div>
+                </div>
+                <div class="mb-3">
+                  <label for="loginContraseña" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="loginContraseña" formControlName="ingresoContraseña">
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cerrarLogin" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarFormulario()">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="ingresarModoEdicion()">Ingresar</button>
+        </div>
+      </div>
+    </div>
+  </div>

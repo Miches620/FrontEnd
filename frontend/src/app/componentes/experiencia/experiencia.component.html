@@ -1,13 +1,15 @@
 <!-- experiencia-->
 <section id="experiencia">
     <div class="container mt-3">
-        <h1 class="text-center">Experiencia <button *ngIf="usuarioAutentificado" id="editarExperiencia"><i class='fas servicesIcon fa-feather'></i></button></h1>
+        <h1 class="text-center">Experiencia</h1>
         <div class="row">
             <div *ngFor="let item of experiencia" class="col-lg-4 mt-4">
                 <div class="laburo card">
                     <img class="card-img-top" [src]="item.logo" alt="2011" style="width:100%; height:auto">
+                    <button *ngIf="usuarioAutentificado" id="editarExperiencia"><i class='fas servicesIcon fa-feather'></i></button>
+                    <button *ngIf="usuarioAutentificado" id="eliminarExperiencia"><i class='fas servicesIcon fa-trash'></i></button>
                     <div class="card-body">
-                        <h4 class="card-title"id="trabajo">{{item.empresa}}</h4>
+                        <h4 class="card-title text-center"id="trabajo">{{item.empresa}}</h4>
                         <p class="card-text text-center"id="puesto">{{item.puesto}}</p>
                     </div>
                 </div>

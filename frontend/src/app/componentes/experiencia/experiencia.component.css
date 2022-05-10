@@ -1,0 +1,32 @@
+/* experiencia */
+
+#experiencia .laburo {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #33bbeb;
+  border-radius: 2%;
+  height: 230px;
+}
+#experiencia img {
+  max-height: 60%;
+}
+#experiencia .laburo:hover {
+  background: #33baeb7e;
+  color: #fff;
+  transition: 0.5s;
+}
+#experiencia .laburo:hover img {
+  background-color: #33baeb7e;
+}
+
+#experiencia button {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  height: auto;
+}
+
+#editarExperiencia {
+  margin-right: 12%;
+}

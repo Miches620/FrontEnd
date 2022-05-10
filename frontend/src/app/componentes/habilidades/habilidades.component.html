@@ -1,9 +1,13 @@
 <!--habilidades-->
 <section id="habilidades">
     <div class="row">
-      <h1 class="text-center">Habilidades <button *ngIf="usuarioAutentificado" id="editarHabilidades"><i class='fas servicesIcon fa-feather'></i></button></h1>
+      <h1 class="text-center">Habilidades</h1>
       <div class="col-lg-4 mt-4">
-        <h2 class="text-center"> Habilidades Blandas </h2>
+        <h2 class="text-center"> Habilidades Blandas</h2>
+        <div class="botones">
+          <button *ngIf="usuarioAutentificado" id="editarHabilidades"><i class='fas servicesIcon fa-feather'></i></button>
+          <button *ngIf="usuarioAutentificado" id="eliminarHabilidades"><i class='fas servicesIcon fa-trash'></i></button>
+        </div>
         <div *ngFor="let item of hBlandas">
           <h6 id="skill5">{{item.habilidad}}</h6>
       <div class="progress">
@@ -12,7 +16,11 @@
         </div>
   </div>
         <div class="col-lg-4 mt-4">
-              <h2 class="text-center"> Habilidades Duras </h2>
+              <h2 class="text-center"> Habilidades Duras</h2>
+              <div class="botones">
+                <button *ngIf="usuarioAutentificado" id="editarHabilidades"><i class='fas servicesIcon fa-feather'></i></button>
+                <button *ngIf="usuarioAutentificado" id="eliminarHabilidades"><i class='fas servicesIcon fa-trash'></i></button>
+              </div>
               <div *ngFor="let item of hDuras">
                 <h6 id="skill5">{{item.habilidad}}</h6>
             <div class="progress">

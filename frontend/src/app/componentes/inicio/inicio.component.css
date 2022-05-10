@@ -1,0 +1,44 @@
+
+  .navbar .container a {
+    color: #fff;
+  }
+  .navbar .container a:hover {
+    text-decoration: underline;
+  }
+  
+  #login{
+      border: .1px #33bbeb solid;
+  }
+  
+  #login:hover {
+      border: .1px #59c9f1 solid;
+      transform: scale(.9);
+      transition: .5s;
+  }
+  
+  /* imagen de inicio */
+  .bgimage {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    background: url("/assets/imagenes/heroImage.jpg");
+    background-size: cover;
+    position: relative;
+  }
+  /* inicio */
+  .hero_title {
+    font-size: 2.5rem;
+    color: #494949;
+  }
+  .hero_desc {
+    font-size: 2rem;
+  }
+  .hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  

@@ -7,7 +7,7 @@ import { ObtenerDatosService } from 'src/app/servicios/obtener-datos.service';
 })
 export class ProyectosComponent implements OnInit {
   proyectos:any
-  usuarioAutentificado:boolean=false
+  usuarioAutentificado:boolean=true
   constructor(private servicio:ObtenerDatosService) { }
 
   ngOnInit(): void {

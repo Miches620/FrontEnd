@@ -1,0 +1,22 @@
+/* acercade */
+.imageAboutPage {
+    margin-left: 10%;
+  width: 80%;
+  height: 70%;
+  border: 2px #33bbeb solid;
+  border-radius: 50%;
+  box-shadow: 0 0 0px #33b7e7,
+    0 0 20px #33b3e2,
+    0 0 40px #30aedb,
+    0 0 80px #2ea6d1,
+    0 0 160px #2c9cc5;
+}
+.imageAboutPage:hover{
+   transform: scale(1.1);
+   transition: 1s;
+}
+
+.imageAboutPage:hover:after{
+     transform: scale(.9);
+    transition: 1s;
+}

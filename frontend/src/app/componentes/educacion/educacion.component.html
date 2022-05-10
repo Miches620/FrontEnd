@@ -1,20 +1,31 @@
 <!-- educacion-->
 <section id="educacion">
-    <div class="container">
-        <h1 class="text-center">Educacion <button *ngIf="usuarioAutentificado" id="editarEducacion"><i class='fas servicesIcon fa-feather'></i></button></h1>
-        <div class="row">
-            <div *ngFor="let item of educacion" class="col-lg-4 mt-4">
-                <div class="card servicesText">
-                    <div class="card-body">
-                      <i class='fas servicesIcon {{item.icono}}'></i>
-                      <h4 class="card-title mt-3" id="titulo1">{{item.titulo}}</h4>
-                      <p class="card-text mt-3 text-center"id="institucion1">{{item.institucion}}</p>
-                      <p class="card-text mt-3 text-center"id="anio1">{{item.anio}}</p>
-                      <p class="card-text mt-3 text-center"><a  id="web1" href="{{item.web}}">{{item.web}}</a></p>
-                    </div>
-                </div>  
+  <div class="container">
+    <h1 class="text-center">Educacion</h1>
+    <div class="row">
+      <div *ngFor="let item of educacion" class="col-lg-4 mt-4">
+        <div class="card servicesText">
+          <div class="card-body">
+            <button *ngIf="usuarioAutentificado" id="editarEducacion">
+              <i class="fas servicesIcon fa-feather"></i>
+            </button>
+            <button *ngIf="usuarioAutentificado" id="eliminarEducacion">
+              <i class="fas servicesIcon fa-trash"></i>
+            </button>
+            <div class="icono">
+              <i class="fas servicesIcon {{ item.icono }}"></i>
             </div>
-            
+            <h5 class="card-title mt-3 text-center" id="titulo">{{ item.titulo }}</h5>
+            <h6 class="card-text mt-3 text-center" id="institucion">
+              {{ item.institucion }}
+            </h6>
+            <h6 class="card-text mt-3 text-center" id="anio">{{ item.anio }}</h6>
+            <h6 class="card-text mt-3 text-center">
+              <a id="web" href="{{ item.web }}">{{ item.web }}</a>
+            </h6>
+          </div>
         </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>

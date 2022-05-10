@@ -1,0 +1,41 @@
+/* educacion */
+.servicesText.card {
+  display: flex;
+  height: 280px;;
+  cursor: pointer;
+}
+.servicesIcon {
+  font-size: 36px;
+  text-align: center;
+  width: 100%;
+}
+.card-title {
+  text-align: center;
+}
+.card:hover .servicesIcon {
+  color: #33bbeb;
+}
+.servicesText:hover {
+  border: 1px solid #33bbeb;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+  margin-top: 0%;
+}
+button {
+  position: absolute;
+  align-self: flex-end;
+}
+
+#editarEducacion {
+  margin-right:15%;
+}
+
+#institucion, #anio, #web{
+  margin-top: 0%;
+  height: auto;
+  width: 100%;
+  font-size: 14px;
+}
+
