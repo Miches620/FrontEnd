@@ -1,0 +1,123 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "imagen": "",
+      "id": 7
+    },
+    {
+      "nombre": "Martin Dolina",
+      "edad": "26",
+      "titulo": "y su baboza",
+      "imagen": "./assets/imagenes/about.jpg",
+      "id": 8
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "id": 9
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "id": 10
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "imagen": "./assets/imagenes/about.jpg",
+      "id": 11
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "imagen": "./assets/imagenes/about.jpg",
+      "id": 12
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "imagen": "./assets/imagenes/AP.png",
+      "id": 13
+    },
+    {
+      "nombre": "Josefina Palermo",
+      "edad": "30",
+      "titulo": "Arquitecta",
+      "imagen": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.2.1003915022.1652234178",
+      "id": 14
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "imagen": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg",
+      "id": 15
+    },
+    {
+      "nombre": "Josefina Palermo",
+      "edad": "30",
+      "titulo": "Arquitecta",
+      "imagen": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.2.1003915022.1652234178",
+      "id": 16
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "imagen": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg",
+      "id": 17
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "img": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.2.1003915022.1652234178",
+      "id": 18
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "img": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg",
+      "id": 19
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

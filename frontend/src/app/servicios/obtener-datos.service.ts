@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Persona} from '../entidades/persona';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +11,6 @@ export class ObtenerDatosService {
   usuarioAutentificado:boolean=false
   constructor(private http: HttpClient) {
     console.log('el servicio esta corriendo');
-  }
-
-  obtenerAcercaDe(): Observable<any> {
-    return this.http.get('./assets/data/acercaDe.json');
   }
 
   obtenerEducacion(): Observable<any> {

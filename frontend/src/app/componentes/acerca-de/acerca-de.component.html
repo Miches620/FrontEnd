@@ -1,12 +1,14 @@
 <!-- acercade-->
 <section id="acercade">
     <div class="container mt-4 pt-4">
-        <h1 class="text-center">Acerca de mi <button *ngIf="usuarioAutentificado" id="editarAcercaDe"><i class='fas servicesIcon fa-feather'></i></button></h1>
+        <div class="titulo">
+            <h1 class="text-center">Acerca de mi</h1>
+            <button *ngIf="usuarioAutentificado" id="editarAcercaDe" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class='fas servicesIcon fa-feather'></i></button>
+        </div>
         <div class="row mt-4">
             <div class="col-lg-4">
                 <img [src]="persona.img" class= "imageAboutPage" alt="yo">
             </div>
-  
             <div class="col-lg-8">
                 <div class="row mt-3">
                     <div class="col-md-6">
@@ -21,3 +23,39 @@
         </div>
       </div>
   </section>
+
+ <!-- Modal -->
+ <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutModalLabel">Editar Seccion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="limpiarFormulario()"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="editarAbout">
+                <div class="mb-3">
+                  <label for="aboutNombre" class="form-label" >Nombre</label>
+                  <input type="text" class="form-control" id="aboutNombre" placeholder="{{persona.nombre}}" formControlName="edicionNombre">
+                </div>
+                <div class="mb-3">
+                    <label for="aboutEdad" class="form-label" >Edad</label>
+                    <input type="text" class="form-control" id="aboutEdad" placeholder="{{persona.edad}}" formControlName="edicionEdad">
+                  </div>
+                  <div class="mb-3">
+                    <label for="aboutTitulo" class="form-label" >Titulo</label>
+                    <input type="text" class="form-control" id="aboutTitulo" placeholder="{{persona.titulo}}" formControlName="edicionTitulo">
+                  </div>
+                  <div class="mb-3">
+                    <label for="aboutTitulo" class="form-label" >Imagen</label>
+                    <input type="text" class="form-control" id="aboutTitulo" placeholder="{{persona.img}}" formControlName="edicionImagen">
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cerrarAbout" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarFormulario()">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="guardarCambios()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
