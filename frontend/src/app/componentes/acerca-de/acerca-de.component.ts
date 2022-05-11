@@ -9,7 +9,7 @@ import { ObtenerDatosAcercaDe } from 'src/app/servicios/AcercaDeService';
 })
 export class AcercaDeComponent implements OnInit {
 persona:any
-usuarioAutentificado:boolean=true
+usuarioAutentificado:boolean=false
   editarAbout: FormGroup;
   constructor(private servicio:ObtenerDatosAcercaDe, private aboutFormBuilder: FormBuilder) {
 

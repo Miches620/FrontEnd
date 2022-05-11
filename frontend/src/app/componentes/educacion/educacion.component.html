@@ -6,7 +6,7 @@
       <div *ngFor="let item of educacion" class="col-lg-4 mt-4">
         <div class="card servicesText">
           <div class="card-body">
-            <button *ngIf="usuarioAutentificado" id="editarEducacion">
+            <button *ngIf="usuarioAutentificado" id="editarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModal">
               <i class="fas servicesIcon fa-feather"></i>
             </button>
             <button *ngIf="usuarioAutentificado" id="eliminarEducacion">
@@ -29,3 +29,43 @@
     </div>
   </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="educacionModal" tabindex="-1" aria-labelledby="educacionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="educacionModalLabel">Editar Seccion: Educacion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="limpiarFormulario()"></button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="editarEducacion">
+              <div class="mb-3">
+                <label for="educacionIcono" class="form-label" >Icono</label>
+                <input type="text" class="form-control" id="educacionIcono" placeholder="{{educacion.icono}}" formControlName="edicionIcono">
+              </div>
+              <div class="mb-3">
+                  <label for="educacionTitulo" class="form-label" >Titulo</label>
+                  <input type="text" class="form-control" id="educacionTitulo" placeholder="{{educacion.titulo}}" formControlName="edicionTitulo">
+                </div>
+                <div class="mb-3">
+                  <label for="educacionInstitucion" class="form-label" >Institucion</label>
+                  <input type="text" class="form-control" id="educacionInstitucion" placeholder="{{educacion.institucion}}" formControlName="edicionInstitucion">
+                </div>
+                <div class="mb-3">
+                  <label for="educacionAnio" class="form-label" >Año</label>
+                  <input type="text" class="form-control" id="educacionAnio" placeholder="{{educacion.anio}}" formControlName="edicionAnio">
+                </div>
+                <div class="mb-3">
+                  <label for="educacionWeb" class="form-label" >Web</label>
+                  <input type="text" class="form-control" id="educacionWeb" placeholder="{{educacion.web}}" formControlName="edicionWeb">
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarEducacion" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarFormulario()">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="guardarCambios()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,6 @@ import { ObtenerDatosService } from 'src/app/servicios/obtener-datos.service';
 export class InicioComponent implements OnInit {
   usuario: any;
   contraseña: any;
-  datosLogin: any;
   loginUsuario: any;
   loginContraseña: any;
   formulario: FormGroup;
@@ -36,11 +35,10 @@ export class InicioComponent implements OnInit {
     this.formulario.reset();
   }
   ingresarModoEdicion() {
-    this.datosLogin = this.formulario.getRawValue();
-    this.loginUsuario = this.datosLogin['ingresoUsuario'];
-    console.log(this.loginUsuario);
-    console.log(this.usuario);
+    this.loginUsuario = this.formulario.get("ingresoUsuario")?.value;
+    this.loginContraseña = this.formulario.get("ingresoContraseña")?.value;
     if (this.loginUsuario == this.usuario) {
+     /* usuarioAutentificado=true; hacer funcionar esto para descubrir u ocultar los botones de edicion*/
       console.log('Bienvenido');
       this.formulario.reset();
       document.getElementById('cerrarLogin')?.click();

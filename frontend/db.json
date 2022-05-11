@@ -108,6 +108,20 @@
       "titulo": "Licenciado Pentacademico",
       "img": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg",
       "id": 19
+    },
+    {
+      "nombre": "Ale Dolina",
+      "edad": "29",
+      "titulo": "Licenciado Pentacademico",
+      "img": "./assets/imagenes/about.jpg",
+      "id": 20
+    },
+    {
+      "nombre": "Josefina Palermo",
+      "edad": "30",
+      "titulo": "Arquitecta",
+      "img": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.2.1003915022.1652234178",
+      "id": 21
     }
   ],
   "comments": [
