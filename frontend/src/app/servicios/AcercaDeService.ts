@@ -10,7 +10,7 @@ export class ObtenerDatosAcercaDe {
 
   usuarioAutentificado:boolean=false
   constructor(private http: HttpClient) {
-    console.log('el servicio esta corriendo');
+  
   }
 /*AcercaDe*/
   obtenerAcercaDe(): Observable<any> {

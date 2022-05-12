@@ -117,11 +117,70 @@
       "id": 20
     },
     {
-      "nombre": "Josefina Palermo",
-      "edad": "30",
-      "titulo": "Arquitecta",
-      "img": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.2.1003915022.1652234178",
+      "nombre": "Santiago Michelena",
+      "edad": "31",
+      "titulo": "Full Stack Developer Jr.",
+      "img": null,
       "id": 21
+    },
+    {
+      "nombre": null,
+      "edad": null,
+      "titulo": null,
+      "img": "./assets/imagenes/about.jpg",
+      "id": 22
+    },
+    {
+      "nombre": "Santiago Michelena",
+      "edad": "31",
+      "titulo": "Full Stack Developer Jr.",
+      "img": "./assets/imagenes/about.jpg",
+      "id": 23
+    },
+    {
+      "icono": "fa-trash",
+      "titulo": "Camionero",
+      "institucion": "La calle papaaaaa",
+      "anio": "2001",
+      "web": "https://ArgentinaPapaaaa",
+      "id": 24
+    },
+    {
+      "icono": "fa-trash",
+      "titulo": "Junta Basura",
+      "institucion": "La calle",
+      "anio": "2001",
+      "web": "https://ArgentinaUnPaisConBuenaGente.com",
+      "id": 25
+    },
+    {
+      "nombre": "saa",
+      "edad": 31,
+      "titulo": "Full Stack Developer Jr",
+      "img": "./assets/imagenes/about.jpg",
+      "id": 26
+    },
+    {
+      "nombre": "Santiago Michelena",
+      "edad": 31,
+      "titulo": "Full Stack Developer Jr",
+      "img": "./assets/imagenes/about.jpg",
+      "id": 27
+    },
+    {
+      "icono": "fa-trash",
+      "titulo": "Recolector",
+      "institucion": "La calle",
+      "anio": "2001",
+      "web": "https://Argentina.com",
+      "id": 28
+    },
+    {
+      "nombre": "Santiago Michelena",
+      "edad": 31,
+      "titulo": "Full Stack Developer Jr",
+      "img": "./assets/imagenes/about.jpg",
+      "id": 29
     }
   ],
   "comments": [

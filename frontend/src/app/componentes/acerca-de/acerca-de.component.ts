@@ -8,22 +8,22 @@ import { ObtenerDatosAcercaDe } from 'src/app/servicios/AcercaDeService';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-persona:any
-usuarioAutentificado:boolean=false
+persona:any;
+usuarioAutentificado:boolean=true;
   editarAbout: FormGroup;
   constructor(private servicio:ObtenerDatosAcercaDe, private aboutFormBuilder: FormBuilder) {
 
     this.editarAbout = this.aboutFormBuilder.group({
-      edicionNombre: ['', [Validators.required]],
+      edicionNombre: ['', [Validators.required,Validators.minLength(5)]],
       edicionEdad: ['', [Validators.required, Validators.maxLength(2)]],
       edicionTitulo: ['',[Validators.required, Validators.minLength(5)]],
-      edicionImagen:['./assets/imagenes/about.jpg',[Validators.required]]
+      edicionImagen:['https://',[Validators.required]]
     });
 
    }
    
    get aboutNombre(){
-return this.editarAbout.get("edicionNombre")
+return this.editarAbout.get("edicionNombre");
    }
 
   ngOnInit(): void {
@@ -38,11 +38,12 @@ return this.editarAbout.get("edicionNombre")
   }
 
   guardarCambios(){
+    if(this.editarAbout.valid){
     let nombre=this.editarAbout.get("edicionNombre")?.value;
     let edad=this.editarAbout.get("edicionEdad")?.value;
     let titulo=this.editarAbout.get("edicionTitulo")?.value;
     let img=this.editarAbout.get("edicionImagen")?.value;
-    let Editarpersona= new Persona(nombre,edad,titulo,img)
+    let Editarpersona= new Persona(nombre,edad,titulo,img);
     this.servicio.editarDatosAcercaDe(Editarpersona).subscribe({
       next: (data) =>{
       this.persona=Editarpersona;
@@ -51,9 +52,19 @@ return this.editarAbout.get("edicionNombre")
       },
     error: (error) =>{
       alert("Error al intentar actualizar los datos. Por favor intente nuevamente");
-    },
+    }
   })
+  } else{
+    alert("Error al actualizar los datos. Verifique que los datos ingresados cumplan con las condiciones de ingreso");
+    this.editarAbout.markAllAsTouched();
   }
+}
 
+  mostrarDatos(){
+    this.editarAbout.get("edicionNombre")?.setValue(this.persona.nombre);
+    this.editarAbout.get("edicionEdad")?.setValue(this.persona.edad);
+    this.editarAbout.get("edicionTitulo")?.setValue(this.persona.titulo);
+    this.editarAbout.get("edicionImagen")?.setValue(this.persona.img);
+  }
 
 }

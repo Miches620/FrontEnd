@@ -30,33 +30,34 @@
   </div>
 </section>
 
+
 <!-- Modal -->
 <div class="modal fade" id="educacionModal" tabindex="-1" aria-labelledby="educacionModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="educacionModalLabel">Editar Seccion: Educacion</h5>
+        <h5 class="modal-title text-center" id="educacionModalLabel">Editar Seccion: Educacion</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="limpiarFormulario()"></button>
       </div>
       <div class="modal-body">
           <form [formGroup]="editarEducacion">
-              <div class="mb-3">
+              <div class="mb-2">
                 <label for="educacionIcono" class="form-label" >Icono</label>
                 <input type="text" class="form-control" id="educacionIcono" placeholder="{{educacion.icono}}" formControlName="edicionIcono">
               </div>
-              <div class="mb-3">
+              <div class="mb-2">
                   <label for="educacionTitulo" class="form-label" >Titulo</label>
                   <input type="text" class="form-control" id="educacionTitulo" placeholder="{{educacion.titulo}}" formControlName="edicionTitulo">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                   <label for="educacionInstitucion" class="form-label" >Institucion</label>
                   <input type="text" class="form-control" id="educacionInstitucion" placeholder="{{educacion.institucion}}" formControlName="edicionInstitucion">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                   <label for="educacionAnio" class="form-label" >Año</label>
                   <input type="text" class="form-control" id="educacionAnio" placeholder="{{educacion.anio}}" formControlName="edicionAnio">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                   <label for="educacionWeb" class="form-label" >Web</label>
                   <input type="text" class="form-control" id="educacionWeb" placeholder="{{educacion.web}}" formControlName="edicionWeb">
                 </div>

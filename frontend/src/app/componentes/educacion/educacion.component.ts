@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Educacion } from 'src/app/entidades/educacion';
-import { ObtenerDatosEducacion } from 'src/app/servicios/EducacionService';
+import { EducacionService } from 'src/app/servicios/educacion.service';
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
@@ -11,20 +11,16 @@ export class EducacionComponent implements OnInit {
 educacion:any
 usuarioAutentificado:boolean=true
 editarEducacion: FormGroup;
-  constructor(private servicio:ObtenerDatosEducacion,private educacionFormBuilder: FormBuilder) {
+  constructor(private servicio:EducacionService, private eduFormBuilder: FormBuilder) { 
 
-    this.editarEducacion = this.educacionFormBuilder.group({
+    this.editarEducacion = this.eduFormBuilder.group({
       edicionIcono: ['', [Validators.required]],
-      edicionTitulo: ['', [Validators.required]],
-      edicionInstitucion: ['',[Validators.required]],
+      edicionTitulo: ['', [Validators.required,]],
+      edicionInstitucion: ['',[Validators.required,]],
       edicionAnio:['',[Validators.required,Validators.maxLength(4)]],
-      edicionWeb:['https://',Validators.required,Validators.pattern('https://')]
+      edicionWeb:['https://',Validators.required]
     });
 
-   }
-
-   limpiarFormulario() {
-    this.editarEducacion.reset();
   }
 
   ngOnInit(): void {
@@ -33,16 +29,23 @@ editarEducacion: FormGroup;
       this.educacion=data["educacion"];
     })
   }
+
+  limpiarFormulario() {
+    this.editarEducacion.reset();
+  }
+
   guardarCambios(){
     let icono=this.editarEducacion.get("edicionIcono")?.value;
-    let titulo=this.editarEducacion.get("ediciontitulo")?.value;
+    let titulo=this.editarEducacion.get("edicionTitulo")?.value;
     let institucion=this.editarEducacion.get("edicionInstitucion")?.value;
     let anio=this.editarEducacion.get("edicionAnio")?.value;
     let web=this.editarEducacion.get("edicionWeb")?.value;
-    let editarEducacion= new Educacion(icono,titulo,institucion,anio,web);
+
+    let editarEducacion= new Educacion(icono,titulo,institucion,anio,web)
     this.servicio.editarDatosEducacion(editarEducacion).subscribe({
       next: (data) =>{
       this.educacion=editarEducacion;
+      console.log(this.educacion)
       this.editarEducacion.reset();
       document.getElementById('cerrarEducacion')?.click();
       },
@@ -51,5 +54,4 @@ editarEducacion: FormGroup;
     },
   })
   }
-
 }
