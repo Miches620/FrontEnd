@@ -1,196 +1,52 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "imagen": "",
-      "id": 7
-    },
-    {
-      "nombre": "Martin Dolina",
-      "edad": "26",
-      "titulo": "y su baboza",
-      "imagen": "./assets/imagenes/about.jpg",
-      "id": 8
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "id": 9
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "id": 10
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "imagen": "./assets/imagenes/about.jpg",
-      "id": 11
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "imagen": "./assets/imagenes/about.jpg",
-      "id": 12
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "imagen": "./assets/imagenes/AP.png",
-      "id": 13
-    },
-    {
-      "nombre": "Josefina Palermo",
-      "edad": "30",
-      "titulo": "Arquitecta",
-      "imagen": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.2.1003915022.1652234178",
-      "id": 14
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "imagen": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg",
-      "id": 15
-    },
-    {
-      "nombre": "Josefina Palermo",
-      "edad": "30",
-      "titulo": "Arquitecta",
-      "imagen": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.2.1003915022.1652234178",
-      "id": 16
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "imagen": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg",
-      "id": 17
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "img": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?size=626&ext=jpg&ga=GA1.2.1003915022.1652234178",
-      "id": 18
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "img": "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg",
-      "id": 19
-    },
-    {
-      "nombre": "Ale Dolina",
-      "edad": "29",
-      "titulo": "Licenciado Pentacademico",
-      "img": "./assets/imagenes/about.jpg",
-      "id": 20
-    },
-    {
-      "nombre": "Santiago Michelena",
-      "edad": "31",
-      "titulo": "Full Stack Developer Jr.",
-      "img": null,
-      "id": 21
-    },
-    {
-      "nombre": null,
-      "edad": null,
-      "titulo": null,
-      "img": "./assets/imagenes/about.jpg",
-      "id": 22
-    },
-    {
-      "nombre": "Santiago Michelena",
-      "edad": "31",
-      "titulo": "Full Stack Developer Jr.",
-      "img": "./assets/imagenes/about.jpg",
-      "id": 23
-    },
-    {
-      "icono": "fa-trash",
-      "titulo": "Camionero",
-      "institucion": "La calle papaaaaa",
-      "anio": "2001",
-      "web": "https://ArgentinaPapaaaa",
-      "id": 24
-    },
-    {
-      "icono": "fa-trash",
-      "titulo": "Junta Basura",
-      "institucion": "La calle",
-      "anio": "2001",
-      "web": "https://ArgentinaUnPaisConBuenaGente.com",
-      "id": 25
-    },
-    {
-      "nombre": "saa",
-      "edad": 31,
-      "titulo": "Full Stack Developer Jr",
-      "img": "./assets/imagenes/about.jpg",
-      "id": 26
-    },
-    {
-      "nombre": "Santiago Michelena",
-      "edad": 31,
-      "titulo": "Full Stack Developer Jr",
-      "img": "./assets/imagenes/about.jpg",
-      "id": 27
-    },
-    {
-      "icono": "fa-trash",
-      "titulo": "Recolector",
-      "institucion": "La calle",
-      "anio": "2001",
-      "web": "https://Argentina.com",
-      "id": 28
-    },
-    {
-      "nombre": "Santiago Michelena",
-      "edad": 31,
-      "titulo": "Full Stack Developer Jr",
-      "img": "./assets/imagenes/about.jpg",
-      "id": 29
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
+  "educacion": [
+    {   
+      "titulo":"Tecnico Quimico",
+      "icono":"fa-flask",
+      "institucion":"Escuela Tecnica N° 1 Eduardo Guillermo Oliver, Lujan",
+      "anio":2008,
+      "web":"https://tecnica1-lujan.edu.ar/",
+      "id":0
+  },
+  {   
+      "titulo":"Reparador de PC",
+      "icono":"fa-wrench",
+      "institucion":"Centro de formacion profesional 403, Lujan",
+      "anio":2014,
+      "web":"https://es-la.facebook.com/CFP403LUJAN/",
+      "id":1
+  },
+  {  
+      "titulo":"Diseñador Proyectual 3D",
+      "icono":"fa-object-ungroup",
+      "institucion":"Centro de formacion profesional 403, Lujan",
+      "anio":2015,
+      "web":"https://es-la.facebook.com/CFP403LUJAN/",
+      "id":2
+  },
+  {   
+      "titulo":"Operador y Diseñador 3D",
+      "icono":"fa-frog",
+      "institucion":"Centro de formacion profesional 403, Lujan",
+      "anio":2016,
+      "web":"https://es-la.facebook.com/CFP403LUJAN/",
+      "id":3
+  },
+  {   
+      "titulo":"Desarrollador en Electronica Digital",
+      "icono":"fa-plug",
+      "institucion":"Centro de formacion profesional 403, Lujan",
+      "anio":2017,
+      "web":"https://es-la.facebook.com/CFP403LUJAN/",
+      "id":4
+  },
+  {  
+      "titulo":"Programador de Sistemas Digitales(Arduino)",
+      "icono":"fa-microchip",
+      "institucion":"Centro de formacion profesional 403, Lujan",
+      "anio":2018,
+      "web":"https://es-la.facebook.com/CFP403LUJAN/",
+      "id":5
   }
+  ]
 }

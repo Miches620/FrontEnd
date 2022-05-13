@@ -6,7 +6,7 @@
       <div *ngFor="let item of educacion" class="col-lg-4 mt-4">
         <div class="card servicesText">
           <div class="card-body">
-            <button *ngIf="usuarioAutentificado" id="editarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModal">
+            <button *ngIf="usuarioAutentificado"  id="editarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModal" (click)="mostrarDatos(item.id)">
               <i class="fas servicesIcon fa-feather"></i>
             </button>
             <button *ngIf="usuarioAutentificado" id="eliminarEducacion">
@@ -41,25 +41,33 @@
       </div>
       <div class="modal-body">
           <form [formGroup]="editarEducacion">
-              <div class="mb-2">
+              <div class="mb-1">
                 <label for="educacionIcono" class="form-label" >Icono</label>
-                <input type="text" class="form-control" id="educacionIcono" placeholder="{{educacion.icono}}" formControlName="edicionIcono">
+                <input type="text" class="form-control" id="educacionIcono"  formControlName="edicionIcono">
+                <div *ngIf="eduIcono?.invalid && eduIcono?.touched">
+                  <div *ngIf="eduIcono?.errors?.['required']" class="text-danger">
+                    Icono es requerido.
+                  </div>
+                  <div *ngIf="eduIcono?.errors?.['minlenght']" class="text-danger">
+                    Icono debe tener un minimo de 5 caracteres; Empezando por "fa-""
+                  </div>
+                </div>
               </div>
-              <div class="mb-2">
+              <div class="mb-1">
                   <label for="educacionTitulo" class="form-label" >Titulo</label>
-                  <input type="text" class="form-control" id="educacionTitulo" placeholder="{{educacion.titulo}}" formControlName="edicionTitulo">
+                  <input type="text" class="form-control" id="educacionTitulo"  formControlName="edicionTitulo">
                 </div>
-                <div class="mb-2">
+                <div class="mb-1">
                   <label for="educacionInstitucion" class="form-label" >Institucion</label>
-                  <input type="text" class="form-control" id="educacionInstitucion" placeholder="{{educacion.institucion}}" formControlName="edicionInstitucion">
+                  <input type="text" class="form-control" id="educacionInstitucion"  formControlName="edicionInstitucion">
                 </div>
-                <div class="mb-2">
+                <div class="mb-1">
                   <label for="educacionAnio" class="form-label" >Año</label>
-                  <input type="text" class="form-control" id="educacionAnio" placeholder="{{educacion.anio}}" formControlName="edicionAnio">
+                  <input type="text" class="form-control" id="educacionAnio"  formControlName="edicionAnio">
                 </div>
-                <div class="mb-2">
+                <div class="mb-1">
                   <label for="educacionWeb" class="form-label" >Web</label>
-                  <input type="text" class="form-control" id="educacionWeb" placeholder="{{educacion.web}}" formControlName="edicionWeb">
+                  <input type="text" class="form-control" id="educacionWeb"  formControlName="edicionWeb">
                 </div>
             </form>
       </div>
@@ -70,3 +78,4 @@
     </div>
   </div>
 </div>
+

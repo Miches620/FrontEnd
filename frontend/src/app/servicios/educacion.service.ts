@@ -12,9 +12,9 @@ export class EducacionService {
 
   /*AcercaDe*/
   obtenerEducacion(): Observable<any> {
-    return this.http.get('./assets/data/educacion.json');
+    return this.http.get('http://localhost:3000/educacion/');
   }
-  editarDatosEducacion(educacion:Educacion):Observable<any>{
-    return this.http.post('http://localhost:3000/posts',educacion);/*sv de prueba. reemplazar*/
+  editarDatosEducacion(id:number,educacion:Educacion):Observable<any>{
+    return this.http.put('http://localhost:3000/educacion/'+id,educacion);/*sv de prueba. reemplazar*/
   }
 }

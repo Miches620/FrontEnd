@@ -1,46 +1,52 @@
 {
     "educacion":[
-        {
+        {   
             "titulo":"Tecnico Quimico",
             "icono":"fa-flask",
             "institucion":"Escuela Tecnica N° 1 Eduardo Guillermo Oliver, Lujan",
             "anio":2008,
-            "web":"https://tecnica1-lujan.edu.ar/"
+            "web":"https://tecnica1-lujan.edu.ar/",
+            "id":0
         },
-        {
+        {   
             "titulo":"Reparador de PC",
             "icono":"fa-wrench",
             "institucion":"Centro de formacion profesional 403, Lujan",
             "anio":2014,
-            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+            "web":"https://es-la.facebook.com/CFP403LUJAN/",
+            "id":1
         },
-        {
+        {  
             "titulo":"Diseñador Proyectual 3D",
             "icono":"fa-object-ungroup",
             "institucion":"Centro de formacion profesional 403, Lujan",
             "anio":2015,
-            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+            "web":"https://es-la.facebook.com/CFP403LUJAN/",
+            "id":2
         },
-        {
+        {   
             "titulo":"Operador y Diseñador 3D",
             "icono":"fa-frog",
             "institucion":"Centro de formacion profesional 403, Lujan",
             "anio":2016,
-            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+            "web":"https://es-la.facebook.com/CFP403LUJAN/",
+            "id":3
         },
-        {
+        {   
             "titulo":"Desarrollador en Electronica Digital",
             "icono":"fa-plug",
             "institucion":"Centro de formacion profesional 403, Lujan",
             "anio":2017,
-            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+            "web":"https://es-la.facebook.com/CFP403LUJAN/",
+            "id":4
         },
-        {
+        {  
             "titulo":"Programador de Sistemas Digitales(Arduino)",
             "icono":"fa-microchip",
             "institucion":"Centro de formacion profesional 403, Lujan",
             "anio":2018,
-            "web":"https://es-la.facebook.com/CFP403LUJAN/"
+            "web":"https://es-la.facebook.com/CFP403LUJAN/",
+            "id":5
         }
     ]
 

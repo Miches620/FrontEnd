@@ -5,6 +5,7 @@ export class Educacion{
     private anio:Int8Array;
     private web:String;
 
+
 constructor(icono:String, titulo:String, institucion:String, anio:Int8Array, web:String){
     this.icono=icono;
     this.titulo=titulo;

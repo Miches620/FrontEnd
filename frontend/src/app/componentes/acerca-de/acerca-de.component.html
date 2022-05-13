@@ -49,10 +49,26 @@
                 <div class="mb-3">
                     <label for="aboutEdad" class="form-label" >Edad</label>
                     <input type="text" class="form-control" id="aboutEdad" formControlName="edicionEdad">
+                    <div *ngIf="aboutEdad?.invalid && aboutEdad?.touched">
+                      <div *ngIf="aboutEdad?.errors?.['required']" class="text-danger">
+                        Edad es requerido.
+                      </div>
+                      <div *ngIf="aboutEdad?.errors?.['minlenght']" class="text-danger">
+                       El valor de ingreso supera los valores tolerables. (Max.99 años)
+                      </div>
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label for="aboutTitulo" class="form-label" >Titulo</label>
                     <input type="text" class="form-control" id="aboutTitulo"  formControlName="edicionTitulo">
+                    <div *ngIf="aboutTitulo?.invalid && aboutTitulo?.touched">
+                      <div *ngIf="aboutTitulo?.errors?.['required']" class="text-danger">
+                        Titulo es requerido.
+                      </div>
+                      <div *ngIf="aboutTitulo?.errors?.['minlenght']" class="text-danger">
+                       El valor minimo de ingreso es de 5 caracteres. Intente no abreviar el titulo.
+                      </div>
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label for="aboutImagen" class="form-label" >Imagen</label>

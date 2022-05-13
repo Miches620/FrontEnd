@@ -27,9 +27,7 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.servicio.obtenerLogin().subscribe((data) => {
       this.usuario = data['login']['usuario'];
-      console.log(this.usuario);
       this.contraseña = data['login']['contraseña'];
-      console.log(this.contraseña);
     });
   }
   limpiarFormulario() {
@@ -38,8 +36,6 @@ export class InicioComponent implements OnInit {
   ingresarModoEdicion() {
     this.datosLogin = this.formulario.getRawValue();
     this.loginUsuario = this.datosLogin['ingresoUsuario'];
-    console.log(this.loginUsuario);
-    console.log(this.usuario);
     if (this.loginUsuario == this.usuario) {
       console.log('Bienvenido');
       this.formulario.reset();
