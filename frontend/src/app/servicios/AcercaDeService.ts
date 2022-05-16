@@ -14,9 +14,9 @@ export class ObtenerDatosAcercaDe {
   }
 /*AcercaDe*/
   obtenerAcercaDe(): Observable<any> {
-    return this.http.get('./assets/data/acercaDe.json');
+    return this.http.get('http://localhost:3000/persona');
   }
   editarDatosAcercaDe(persona:Persona):Observable<any>{
-    return this.http.post('http://localhost:3000/posts',persona);/*sv de prueba. reemplazar*/
+    return this.http.post('http://localhost:3000/persona',persona);/*sv de prueba. reemplazar*/
   }
 }

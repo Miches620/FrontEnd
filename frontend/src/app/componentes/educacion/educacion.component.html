@@ -1,15 +1,15 @@
 <!-- educacion-->
 <section id="educacion">
   <div class="container">
-    <h1 class="text-center">Educacion</h1>
+      <h1 class="text-center">Educacion</h1>
     <div class="row">
       <div *ngFor="let item of educacion" class="col-lg-4 mt-4">
         <div class="card servicesText">
           <div class="card-body">
-            <button *ngIf="usuarioAutentificado"  id="editarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModal" (click)="mostrarDatos(item.id)">
+            <button *ngIf="usuarioAutentificado"  id="editarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModalEditar" (click)="mostrarDatos(item.id)">
               <i class="fas servicesIcon fa-feather"></i>
             </button>
-            <button *ngIf="usuarioAutentificado" id="eliminarEducacion">
+            <button *ngIf="usuarioAutentificado" id="eliminarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModalBorrar" (click)="almacenarPosicion(item.posicion)">
               <i class="fas servicesIcon fa-trash"></i>
             </button>
             <div class="icono">
@@ -31,12 +31,12 @@
 </section>
 
 
-<!-- Modal -->
-<div class="modal fade" id="educacionModal" tabindex="-1" aria-labelledby="educacionModalLabel" aria-hidden="true">
+<!-- Modal Edicion-->
+<div class="modal fade" id="educacionModalEditar" tabindex="-1" aria-labelledby="educacionModalEditarLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-center" id="educacionModalLabel">Editar Seccion: Educacion</h5>
+        <h6 class="modal-title" id="educacionModalLabel">Editar Seccion: Educacion</h6>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="limpiarFormulario()"></button>
       </div>
       <div class="modal-body">
@@ -56,14 +56,47 @@
               <div class="mb-1">
                   <label for="educacionTitulo" class="form-label" >Titulo</label>
                   <input type="text" class="form-control" id="educacionTitulo"  formControlName="edicionTitulo">
+                  <div *ngIf="eduTitulo?.invalid && eduTitulo?.touched">
+                    <div *ngIf="eduTitulo?.errors?.['required']" class="text-danger">
+                      Titulo es requerido.
+                    </div>
+                    <div *ngIf="eduTitulo?.errors?.['minlenght']" class="text-danger">
+                      Titulo debe tener un minimo de 5 caracteres.
+                    </div>
+                  </div>
                 </div>
                 <div class="mb-1">
                   <label for="educacionInstitucion" class="form-label" >Institucion</label>
                   <input type="text" class="form-control" id="educacionInstitucion"  formControlName="edicionInstitucion">
+                  <div *ngIf="eduInstitucion?.invalid && eduInstitucion?.touched">
+                    <div *ngIf="eduInstitucion?.errors?.['required']" class="text-danger">
+                      Institucion es requerido.
+                    </div>
+                    <div *ngIf="eduInstitucion?.errors?.['minlenght']" class="text-danger">
+                      Institucion debe tener un minimo de 5 caracteres.
+                    </div>
+                  </div>
                 </div>
                 <div class="mb-1">
                   <label for="educacionAnio" class="form-label" >Año</label>
                   <input type="text" class="form-control" id="educacionAnio"  formControlName="edicionAnio">
+                  <div *ngIf="eduAnio?.invalid && eduAnio?.touched">
+                    <div *ngIf="eduAnio?.errors?.['required']" class="text-danger">
+                      Año es requerido.
+                    </div>
+                    <div *ngIf="eduAnio?.errors?.['minlenght']" class="text-danger">
+                      El valor ingresado debera tener un minimo de 4 digitos.
+                    </div>
+                    <div *ngIf="eduAnio?.errors?.['maxlenght']" class="text-danger">
+                      El valor ingresado debera tener un maximo de 4 digitos.
+                    </div>
+                    <div *ngIf="eduAnio?.errors?.['min']" class="text-danger">
+                      El año ingresado debera pertenecer (por lo menos) al siglo pasado o al actual.
+                    </div>
+                    <div *ngIf="eduAnio?.errors?.['maxlenght']" class="text-danger">
+                      El año ingresado no puede ser mayor al año en transcurso.
+                    </div>
+                  </div>
                 </div>
                 <div class="mb-1">
                   <label for="educacionWeb" class="form-label" >Web</label>
@@ -74,6 +107,25 @@
       <div class="modal-footer">
         <button type="button" id="cerrarEducacion" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarFormulario()">Cerrar</button>
         <button type="button" class="btn btn-primary" (click)="guardarCambios()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Borrar-->
+<div class="modal fade" id="educacionModalBorrar" tabindex="-1" aria-labelledby="educacionModalBorrarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Borrar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Esta seguro de que desea continuar?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarBorrarEducacion" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="eliminar()">Aceptar y Borrar</button>
       </div>
     </div>
   </div>

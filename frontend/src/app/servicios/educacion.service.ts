@@ -10,11 +10,15 @@ export class EducacionService {
 
   constructor(private http: HttpClient) { }
 
-  /*AcercaDe*/
+  /*Educacion*/
   obtenerEducacion(): Observable<any> {
     return this.http.get('http://localhost:3000/educacion/');
   }
   editarDatosEducacion(id:number,educacion:Educacion):Observable<any>{
     return this.http.put('http://localhost:3000/educacion/'+id,educacion);/*sv de prueba. reemplazar*/
+  }
+
+  borrarDatosEducacion(id:number):Observable<any>{
+    return this.http.delete('http://localhost:3000/educacion/'+id);
   }
 }

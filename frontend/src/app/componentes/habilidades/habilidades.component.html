@@ -5,29 +5,287 @@
       <div class="col-lg-4 mt-4">
         <h2 class="text-center"> Habilidades Blandas</h2>
         <div class="botones">
-          <button *ngIf="usuarioAutentificado" id="editarHabilidades"><i class='fas servicesIcon fa-feather'></i></button>
-          <button *ngIf="usuarioAutentificado" id="eliminarHabilidades"><i class='fas servicesIcon fa-trash'></i></button>
+          <button *ngIf="usuarioAutentificado" id="editarHabilidadesBlandas" data-bs-toggle="modal" data-bs-target="#hBlandasModalEditar"><i class='fas servicesIcon fa-feather'></i></button>
+          <button *ngIf="usuarioAutentificado" id="eliminarHabilidadesBlandas" data-bs-toggle="modal" data-bs-target="#hBlandasModalBorrar"><i class='fas servicesIcon fa-trash'></i></button>
         </div>
         <div *ngFor="let item of hBlandas">
-          <h6 id="skill5">{{item.habilidad}}</h6>
+          <h6 id="hBlandasSkill">{{item.habilidad}}</h6>
       <div class="progress">
-          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [style.width]="item.porcentaje +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"id="valorSkill5">{{item.porcentaje}} %</div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [style.width]="item.porcentaje +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"id="valorSkill">{{item.porcentaje}} %</div>
         </div>
         </div>
   </div>
         <div class="col-lg-4 mt-4">
               <h2 class="text-center"> Habilidades Duras</h2>
               <div class="botones">
-                <button *ngIf="usuarioAutentificado" id="editarHabilidades"><i class='fas servicesIcon fa-feather'></i></button>
-                <button *ngIf="usuarioAutentificado" id="eliminarHabilidades"><i class='fas servicesIcon fa-trash'></i></button>
+                <button *ngIf="usuarioAutentificado" id="editarHabilidadesDuras" data-bs-toggle="modal" data-bs-target="#hDurasModalEditar"><i class='fas servicesIcon fa-feather'></i></button>
+                <button *ngIf="usuarioAutentificado" id="eliminarHabilidadesDuras" data-bs-toggle="modal" data-bs-target="#hDurasModalBorrar"><i class='fas servicesIcon fa-trash'></i></button>
               </div>
               <div *ngFor="let item of hDuras">
-                <h6 id="skill5">{{item.habilidad}}</h6>
+                <h6 id="hDurasSkill">{{item.habilidad}}</h6>
             <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [style.width]="item.porcentaje +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"id="valorSkill5">{{item.porcentaje}} %</div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [style.width]="item.porcentaje +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"id="valorSkill">{{item.porcentaje}} %</div>
               </div>
               </div>
         </div>
     </div>   
     </section>
+
+    <!-- Modal Edicion: Habilidades Blandas parte 1-->
+    <div class="modal fade" id="hBlandasModalEditar" tabindex="-1" aria-labelledby="habilidadesBlandasModalEditarLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="hBlandasModalLabel">Editar Seccion: Habilidades Blandas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reiniciarForm()"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="mb-1">
+                    <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
+                    <div *ngFor="let item of hBlandas">
+                      <input type="radio" id="habItem" name="drone" value="{{item.habilidad}}" 
+                            (click)="almacenarItem(item.id)">
+                      <label for="habItem">{{item.habilidad}}</label>
+                    </div>
+                  </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="cerrarHabilidad" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reiniciarForm()">Cancelar</button>
+            <button *ngIf="boton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hBlandasModalEditar2" (click)="editarHBlandasItem()">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Edicion: Habilidades Blandas parte 2-->
+    
+     <div class="modal fade" id="hBlandasModalEditar2" tabindex="-1" aria-labelledby="hBlandasModalEditarLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="hBlandasModalLabel">Habilidades Blandas: Editar item</h5>
+            <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#hBlandasModalEditar" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="editarHabilidades">
+                  <div class="mb-1">
+                    <label for="habHabilidad" class="form-label" >Habilidad</label>
+                    <input type="text" class="form-control" id="habHabilidad"  formControlName="edicionHabilidad">
+                    <div *ngIf="habHabilidad?.invalid && habHabilidad?.touched">
+                      <div *ngIf="habHabilidad?.errors?.['required']" class="text-danger">
+                        Nombre de Habilidad es requerido.
+                      </div>
+                      <div *ngIf="habHabilidad?.errors?.['minLenght']" class="text-danger">
+                        Habilidad debera tener un minimo de 5 caracteres.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-1">
+                      <label for="habPorcentaje" class="form-label" >Porcentaje</label>
+                      <input type="text" class="form-control" id="habPorcentaje"  formControlName="edicionPorcentaje">
+                      <div *ngIf="habPorcentaje?.invalid && habPorcentaje?.touched">
+                          <div *ngIf="habPorcentaje?.errors?.['required']" class="text-danger">
+                           Porcentaje es requerido.
+                          </div>
+                          <div *ngIf="habPorcentaje?.errors?.['minlenght']" class="text-danger">
+                            No sea tan modest@ :)
+                          </div>
+                          <div *ngIf="habPorcentaje?.errors?.['min']" class="text-danger">
+                            No sea tan modest@ :)
+                          </div>
+                          <div *ngIf="habPorcentaje?.errors?.['maxlenght']" class="text-danger">
+                            el valor del Porcentaja no puede superar el 100%.
+                          </div>
+                          <div *ngIf="habPorcentaje?.errors?.['max']" class="text-danger">
+                            el valor del Porcentaja no puede superar el 100%.
+                          </div>
+                        </div>
+                    </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button"  class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#hBlandasModalEditar">Volver</button>
+            <button type="button" class="btn btn-primary" (click)="guardarCambiosHBlandas()">Guardar</button>
+            <button hidden id="cerrarEditarHabilidadBlanda" type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Borrar: Habilidades Blandas parte 1-->
+    <div class="modal fade" id="hBlandasModalBorrar" tabindex="-1" aria-labelledby="habilidadesBlandasModalBorrarLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="hBlandasModalLabel">Borrar: Habilidades Blandas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reiniciarForm()"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="mb-1">
+                    <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
+                    <div *ngFor="let item of hBlandas">
+                      <input type="radio" id="habItem" name="drone" value="{{item.habilidad}}" 
+                            (click)="almacenarItem(item.id)">
+                      <label for="habItem">{{item.habilidad}}</label>
+                    </div>
+                  </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="cerrarHabilidad" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reiniciarForm()">Cancelar</button>
+            <button *ngIf="boton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hBlandasModalBorrar2">Borrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Modal Borrar: Habilidades Blandas parte 2-->
+<div class="modal fade" id="hBlandasModalBorrar2" tabindex="-1" aria-labelledby="hBlandasModalBorrarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Borrar</h5>
+        <button type="button" id="cerrarBorrarHabilidad" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Esta seguro de que desea continuar?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarBorrarHBlandas" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="eliminarHBlandas()">Aceptar y Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edicion: Habilidades Duras parte 1-->
+<div class="modal fade" id="hDurasModalEditar" tabindex="-1" aria-labelledby="habilidadesDurasModalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="hDurasModalLabel">Editar Seccion: Habilidades Duras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reiniciarForm()"></button>
+      </div>
+      <div class="modal-body">
+          <form>
+              <div class="mb-1">
+                <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
+                <div *ngFor="let item of hDuras">
+                  <input type="radio" id="habItem" name="drone" value="{{item.habilidad}}" 
+                        (click)="almacenarItem(item.id)">
+                  <label for="habItem">{{item.habilidad}}</label>
+                </div>
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarHabilidad" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reiniciarForm()">Cancelar</button>
+        <button *ngIf="boton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hDurasModalEditar2" (click)="editarHDurasItem()">Siguiente</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edicion: Habilidades Duras parte 2-->
+
+ <div class="modal fade" id="hDurasModalEditar2" tabindex="-1" aria-labelledby="hDurasModalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="hDurasModalLabel">Habilidades Duras: Editar item</h5>
+        <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#hDurasModalEditar" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="editarHabilidades">
+              <div class="mb-1">
+                <label for="habHabilidad" class="form-label" >Habilidad</label>
+                <input type="text" class="form-control" id="habHabilidad"  formControlName="edicionHabilidad">
+                <div *ngIf="habHabilidad?.invalid && habHabilidad?.touched">
+                  <div *ngIf="habHabilidad?.errors?.['required']" class="text-danger">
+                    Nombre de Habilidad es requerido.
+                  </div>
+                  <div *ngIf="habHabilidad?.errors?.['minLenght']" class="text-danger">
+                    Habilidad debera tener un minimo de 5 caracteres.
+                  </div>
+                </div>
+              </div>
+              <div class="mb-1">
+                  <label for="habPorcentaje" class="form-label" >Porcentaje</label>
+                  <input type="text" class="form-control" id="habPorcentaje"  formControlName="edicionPorcentaje">
+                  <div *ngIf="habPorcentaje?.invalid && habPorcentaje?.touched">
+                      <div *ngIf="habPorcentaje?.errors?.['required']" class="text-danger">
+                       Porcentaje es requerido.
+                      </div>
+                      <div *ngIf="habPorcentaje?.errors?.['minlenght']" class="text-danger">
+                        No sea tan modest@ :)
+                      </div>
+                      <div *ngIf="habPorcentaje?.errors?.['min']" class="text-danger">
+                        No sea tan modest@ :)
+                      </div>
+                      <div *ngIf="habPorcentaje?.errors?.['maxlenght']" class="text-danger">
+                        el valor del Porcentaja no puede superar el 100%.
+                      </div>
+                      <div *ngIf="habPorcentaje?.errors?.['max']" class="text-danger">
+                        el valor del Porcentaja no puede superar el 100%.
+                      </div>
+                    </div>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarHabilidad" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#hDurasModalEditar">Volver</button>
+        <button type="button" class="btn btn-primary" (click)="guardarCambiosHDuras()">Guardar</button>
+        <button hidden id="cerrarEditarHabilidadDura" type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Borrar: Habilidades Duras parte 1-->
+<div class="modal fade" id="hDurasModalBorrar" tabindex="-1" aria-labelledby="habilidadesDurasModalBorrarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="hDurasModalLabel">Borrar: Habilidades Duras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reiniciarForm()"></button>
+      </div>
+      <div class="modal-body">
+          <form>
+              <div class="mb-1">
+                <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
+                <div *ngFor="let item of hDuras">
+                  <input type="radio" id="habItem" name="drone" value="{{item.habilidad}}" 
+                        (click)="almacenarItem(item.id)">
+                  <label for="habItem">{{item.habilidad}}</label>
+                </div>
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarHabilidad" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reiniciarForm()">Cancelar</button>
+        <button *ngIf="boton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hDurasModalBorrar2">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Borrar: Habilidades Duras parte 2-->
+<div class="modal fade" id="hDurasModalBorrar2" tabindex="-1" aria-labelledby="hDurasModalBorrarLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Borrar</h5>
+    <button type="button" id="cerrarBorrarHabilidad" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <p>Esta seguro de que desea continuar?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="cerrarBorrarHDuras" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="eliminarHDuras()">Aceptar y Borrar</button>
+  </div>
+</div>
+</div>
+</div>
   

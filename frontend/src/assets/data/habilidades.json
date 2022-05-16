@@ -2,38 +2,54 @@
 	"habilidades":[{
 			"habilidadesBlandas": [{
 					"habilidad":"Trabajo en Equipo",
-					"porcentaje":90
+					"porcentaje":90,
+					"posicion":0,
+					"id":0
 				},
 				{
 					"habilidad":"Organizacion",
-					"porcentaje":80
+					"porcentaje":80,
+					"posicion":0,
+					"id":1
 				},
 				{
 					"habilidad":"Comunicacion",
-					"porcentaje":95
+					"porcentaje":95,
+					"posicion":0,
+					"id":2
 				},
 				{
 					"habilidad":"Liderazgo",
-					"porcentaje":75
+					"porcentaje":75,
+					"posicion":0,
+					"id":3
 				}
 			]
 		},
 		{
 			"habilidadesDuras": [{
 					"habilidad":"Programacion",
-					"porcentaje":70
+					"porcentaje":70,
+					"posicion":0,
+					"id":0
 				},
 				{
 					"habilidad":"Idiomas",
-					"porcentaje":70
+					"porcentaje":70,
+					"posicion":0,
+					"id":1
 				},
 				{
 					"habilidad":"Diseño Grafico",
-					"porcentaje":65
+					"porcentaje":65,
+					"posicion":0,
+					"id":2
 				},
 				{
 					"habilidad":"Diseño 3D",
-					"porcentaje":70
+					"porcentaje":70,
+					"posicion":0,
+					"id":3
 				}
 			]
 		}

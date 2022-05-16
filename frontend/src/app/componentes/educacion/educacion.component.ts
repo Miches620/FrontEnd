@@ -18,8 +18,8 @@ editarEducacion: FormGroup;
       edicionIcono: ['fa-', [Validators.required,Validators.minLength(5)]],
       edicionTitulo: ['', [Validators.required,Validators.minLength(5)]],
       edicionInstitucion: ['',[Validators.required,Validators.minLength(5)]],
-      edicionAnio:['',[Validators.required,Validators.maxLength(4),Validators.minLength(4)]],
-      edicionWeb:['https://',Validators.required]
+      edicionAnio:['',[Validators.required,Validators.maxLength(4),Validators.minLength(4),Validators.min(1901),Validators.max(2022) ]],
+      edicionWeb:['https://']
     });
 
   }
@@ -47,7 +47,11 @@ editarEducacion: FormGroup;
 
   ngOnInit(): void {
     this.servicio.obtenerEducacion().subscribe(data=>{
-      console.log(data);
+      
+      for(let item of data){
+       item['posicion']=data.indexOf(item);
+    }
+    /*console.log(data)*/
       this.educacion=data;
     })
   }
@@ -91,5 +95,24 @@ else{
     this.editarEducacion.get('edicionAnio')?.setValue(this.educacion[i].anio);
      this.editarEducacion.get('edicionWeb')?.setValue(this.educacion[i].web);
      this.idActual=this.educacion[i]['id'];
+  }
+
+  almacenarPosicion(i:number){
+    this.idActual=this.educacion[i]['id'];
+    console.log(this.idActual);
+  }
+
+  eliminar(){
+    this.servicio.borrarDatosEducacion(this.idActual).subscribe({
+      next: (data) =>{
+        console.log("se borro id:" + this.idActual);
+        document.getElementById('cerrarBorrarEducacion')?.click();
+        this.idActual=null;
+      this.ngOnInit();
+      },
+    error: (error) =>{
+      alert("Error al intentar borrar el elemento. Por favor intente nuevamente");
+    }
+  })
   }
 }

@@ -9,6 +9,11 @@ import { ObtenerDatosAcercaDe } from 'src/app/servicios/AcercaDeService';
 })
 export class AcercaDeComponent implements OnInit {
   persona: any;
+  imagen:any
+  nombre:any
+  edad:any
+  titulo:any
+
   usuarioAutentificado: boolean = true;
   editarAbout: FormGroup;
   constructor(
@@ -35,9 +40,17 @@ export class AcercaDeComponent implements OnInit {
     return this.editarAbout.get('edicionTitulo');
   }
 
+  get aboutImagen() {
+    return this.editarAbout.get('edicionImagen');
+  }
+
   ngOnInit(): void {
     this.servicio.obtenerAcercaDe().subscribe((data) => {
-      this.persona = data['persona'];
+      this.persona = data;
+      this.imagen=this.persona['img'];
+      this.nombre=this.persona['nombre'];
+      this.edad=this.persona['edad'];
+      this.titulo=this.persona['titulo'];
     });
   }
 
@@ -57,6 +70,7 @@ export class AcercaDeComponent implements OnInit {
           this.persona = Editarpersona;
           this.editarAbout.reset();
           document.getElementById('cerrarAbout')?.click();
+          this.ngOnInit();
         },
         error: (error) => {
           alert(

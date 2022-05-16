@@ -23,7 +23,7 @@
   flex-direction: column;
   margin-top: 0%;
 }
-button {
+#educacion button {
   position: absolute;
   align-self: flex-end;
 }
@@ -39,3 +39,23 @@ button {
   font-size: 14px;
 }
 
+
+/*
+@keyframes aparecer{
+  0%{
+    height:.3px;
+    font-size:.05px
+  }
+  5%{
+    height:25px;
+    font-size:14px
+  }
+  75%{
+    height:65px;
+    font-size:33px
+  }
+  100%{
+    height:50px;
+    font-size:28px
+  }
+}*/

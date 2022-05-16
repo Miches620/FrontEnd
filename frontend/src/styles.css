@@ -26,14 +26,16 @@
   #eliminarEducacion,
   #editarExperiencia,
   #eliminarExperiencia,
-  #editarHabilidades,
-  #eliminarHabilidades,
+  #editarHabilidadesBlandas,
+  #editarHabilidadesDuras,
+  #eliminarHabilidadesBlandas,
+  #eliminarHabilidadesDuras,
   #editarProyectos,
   #eliminarProyectos {
     border-radius: 50%;
     border: 1px solid #33bbeb;
     color: #33bbeb;
-    font-size: 28px;
+    font-size: 30px;
     text-align: center;
   }
   
@@ -42,8 +44,10 @@
   #eliminarEducacion:hover,
   #editarExperiencia:hover,
   #eliminarExperiencia:hover,
-  #editarHabilidades:hover,
-  #eliminarHabilidades:hover,
+  #editarHabilidadesBlandas:hover,
+  #editarHabilidadesDuras:hover,
+  #eliminarHabilidadesBlandas:hover,
+  #eliminarHabilidadesDuras:hover,
   #editarProyectos:hover,
   #eliminarProyectos:hover {
       transform: rotateZ(360deg);
@@ -76,6 +80,9 @@
   height: auto;
 }
   #editarAcercaDe,
+  #editarEducacion,
+  #eliminarEducacion,
+  #sumarEducacion,
   #editarExperiencia,
   #eliminarExperiencia,
   #editarHabilidades,
@@ -89,10 +96,10 @@
     text-align: center;
   }
 
-  #editarEducacion, #eliminarEducacion {
+  /*#editarEducacion, #eliminarEducacion {
     width: 50px;
     height: 50px;
-  }
+  }*/
 
   #editarEducacion{
     display: flex;

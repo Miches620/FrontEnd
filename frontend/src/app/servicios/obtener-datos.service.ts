@@ -10,11 +10,6 @@ export class ObtenerDatosService {
 
   usuarioAutentificado:boolean=false
   constructor(private http: HttpClient) {
-    console.log('el servicio esta corriendo');
-  }
-
-  obtenerEducacion(): Observable<any> {
-    return this.http.get('./assets/data/educacion.json');
   }
 
   obtenerExperiencia(): Observable<any> {
