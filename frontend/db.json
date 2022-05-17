@@ -1,4 +1,8 @@
 {
+  "login": {
+    "email": "miches_620@hotmail.com",
+    "password": "35794796"
+  },
   "persona": {
     "nombre": "Santiago Michelena",
     "edad": "31",
@@ -112,28 +116,44 @@
   ],
   "habilidadesDuras": [
     {
-      "habilidad":"Programacion",
-      "porcentaje":70,
-      "posicion":0,
-      "id":0
+      "habilidad": "Programacion",
+      "porcentaje": 70,
+      "posicion": 0,
+      "id": 0
     },
     {
-      "habilidad":"Idiomas",
-      "porcentaje":70,
-      "posicion":0,
-      "id":1
+      "habilidad": "Idiomas",
+      "porcentaje": 70,
+      "posicion": 0,
+      "id": 1
     },
     {
-      "habilidad":"Diseño Grafico",
-      "porcentaje":65,
-      "posicion":0,
-      "id":2
+      "habilidad": "Diseño Grafico",
+      "porcentaje": 65,
+      "posicion": 0,
+      "id": 2
     },
     {
-      "habilidad":"Diseño 3D",
-      "porcentaje":70,
-      "posicion":0,
-      "id":3
+      "habilidad": "Diseño 3D",
+      "porcentaje": 70,
+      "posicion": 0,
+      "id": 3
     }
+  ],
+  "proyectos": [
+    {
+      "img":"./assets/imagenes/pro1.jpeg",
+      "proyecto":"Booleana",
+      "descripcion":"Sistema de automatizacion de equipos cerveceros",
+      "estado":"En Proceso",
+      "id":0
+  },
+  {
+      "img":"./assets/imagenes/pro2.jpeg",
+      "proyecto":"Auto-Clean",
+      "descripcion":"Sistema de automatizacion de limpieza C.I.P multirubro",
+      "estado":"En Proceso",
+      "id":1
+  }
   ]
 }

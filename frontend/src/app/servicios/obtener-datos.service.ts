@@ -1,30 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Persona} from '../entidades/persona';
+import { Login} from '../entidades/login';  
 
 @Injectable({
   providedIn: 'root',
 })
 export class ObtenerDatosService {
 
-  usuarioAutentificado:boolean=false
   constructor(private http: HttpClient) {
   }
 
-  obtenerExperiencia(): Observable<any> {
-    return this.http.get('./assets/data/experiencia.json');
-  }
-
-  obtenerHabilidades(): Observable<any> {
-    return this.http.get('./assets/data/habilidades.json');
-  }
-
-  obtenerProyectos(): Observable<any> {
-    return this.http.get('./assets/data/proyectos.json');
-  }
-
   obtenerLogin(): Observable<any> {
-    return this.http.get('./assets/data/login.json');
+    return this.http.get('http://localhost:3000/login');
+  }
+
+  editarLogin(estado: Login):Observable<any>{
+    return this.http.post('http://localhost:3000/login',estado)
   }
 }

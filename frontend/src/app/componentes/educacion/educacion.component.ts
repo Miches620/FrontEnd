@@ -10,7 +10,6 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
 export class EducacionComponent implements OnInit {
 educacion:any
 idActual:any
-usuarioAutentificado:boolean=true
 editarEducacion: FormGroup;
   constructor(private servicio:EducacionService, private eduFormBuilder: FormBuilder) { 
 

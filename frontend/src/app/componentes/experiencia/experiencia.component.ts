@@ -9,7 +9,6 @@ import { Experiencia } from 'src/app/entidades/experiencia';
 })
 export class ExperienciaComponent implements OnInit {
 experiencia:any
-usuarioAutentificado:boolean=true
 idActual:any
 editarExperiencia:FormGroup
   constructor(private servicio:ExperienciaService, private expFormBuilder: FormBuilder) {

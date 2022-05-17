@@ -12,8 +12,6 @@ hBlandas:any
 hDuras:any
 habilidades:any
 idActual:any
-arrayActual:any
-usuarioAutentificado:boolean=true
 boton:boolean=false
 editarHabilidades:FormGroup
 
@@ -106,12 +104,6 @@ else{
 }
   }
 
-  /*almacenarPosicion(i:number){
-    this.idActual=this.habilidad[i]['id'];
-
-    console.log(this.idActual);
-  }*/
-
   reiniciarForm(){
     this.ngOnInit();
   }
@@ -119,7 +111,6 @@ else{
   eliminarHBlandas(){
     this.servicio.borrarHBlandas(this.idActual).subscribe({
       next: (data) =>{
-        console.log("se borro id:" + this.idActual);
         document.getElementById('cerrarBorrarHBlandas')?.click();
         this.idActual=null;
         this.ngOnInit();
@@ -133,7 +124,6 @@ else{
   eliminarHDuras(){
     this.servicio.borrarHDuras(this.idActual).subscribe({
       next: (data) =>{
-        console.log("se borro id:" + this.idActual);
         document.getElementById('cerrarBorrarHDuras')?.click();
         this.idActual=null;
         this.ngOnInit();

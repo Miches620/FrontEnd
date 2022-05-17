@@ -8,7 +8,6 @@ import { Persona } from '../entidades/persona';
 })
 export class ObtenerDatosAcercaDe {
 
-  usuarioAutentificado:boolean=false
   constructor(private http: HttpClient) {
   
   }
@@ -19,4 +18,9 @@ export class ObtenerDatosAcercaDe {
   editarDatosAcercaDe(persona:Persona):Observable<any>{
     return this.http.post('http://localhost:3000/persona',persona);/*sv de prueba. reemplazar*/
   }
+
+  obtenerAccesoDeEditor():Observable<any>{
+    return this.http.get('http://localhost:3000/login');
+  }
+ 
 }

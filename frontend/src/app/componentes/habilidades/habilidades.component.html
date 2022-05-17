@@ -5,8 +5,8 @@
       <div class="col-lg-4 mt-4">
         <h2 class="text-center"> Habilidades Blandas</h2>
         <div class="botones">
-          <button *ngIf="usuarioAutentificado" id="editarHabilidadesBlandas" data-bs-toggle="modal" data-bs-target="#hBlandasModalEditar"><i class='fas servicesIcon fa-feather'></i></button>
-          <button *ngIf="usuarioAutentificado" id="eliminarHabilidadesBlandas" data-bs-toggle="modal" data-bs-target="#hBlandasModalBorrar"><i class='fas servicesIcon fa-trash'></i></button>
+          <button id="editarHabilidadesBlandas" data-bs-toggle="modal" data-bs-target="#hBlandasModalEditar"><i class='fas servicesIcon fa-feather'></i></button>
+          <button id="eliminarHabilidadesBlandas" data-bs-toggle="modal" data-bs-target="#hBlandasModalBorrar"><i class='fas servicesIcon fa-trash'></i></button>
         </div>
         <div *ngFor="let item of hBlandas">
           <h6 id="hBlandasSkill">{{item.habilidad}}</h6>
@@ -18,8 +18,8 @@
         <div class="col-lg-4 mt-4">
               <h2 class="text-center"> Habilidades Duras</h2>
               <div class="botones">
-                <button *ngIf="usuarioAutentificado" id="editarHabilidadesDuras" data-bs-toggle="modal" data-bs-target="#hDurasModalEditar"><i class='fas servicesIcon fa-feather'></i></button>
-                <button *ngIf="usuarioAutentificado" id="eliminarHabilidadesDuras" data-bs-toggle="modal" data-bs-target="#hDurasModalBorrar"><i class='fas servicesIcon fa-trash'></i></button>
+                <button  id="editarHabilidadesDuras" data-bs-toggle="modal" data-bs-target="#hDurasModalEditar"><i class='fas servicesIcon fa-feather'></i></button>
+                <button  id="eliminarHabilidadesDuras" data-bs-toggle="modal" data-bs-target="#hDurasModalBorrar"><i class='fas servicesIcon fa-trash'></i></button>
               </div>
               <div *ngFor="let item of hDuras">
                 <h6 id="hDurasSkill">{{item.habilidad}}</h6>
@@ -141,6 +141,7 @@
         </div>
       </div>
     </div>
+    
 <!-- Modal Borrar: Habilidades Blandas parte 2-->
 <div class="modal fade" id="hBlandasModalBorrar2" tabindex="-1" aria-labelledby="hBlandasModalBorrarLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -200,8 +201,8 @@
       <div class="modal-body">
           <form [formGroup]="editarHabilidades">
               <div class="mb-1">
-                <label for="habHabilidad" class="form-label" >Habilidad</label>
-                <input type="text" class="form-control" id="habHabilidad"  formControlName="edicionHabilidad">
+                <label for="hDurasHabilidad" class="form-label" >Habilidad</label>
+                <input type="text" class="form-control" id="hDurasHabilidad"  formControlName="edicionHabilidad">
                 <div *ngIf="habHabilidad?.invalid && habHabilidad?.touched">
                   <div *ngIf="habHabilidad?.errors?.['required']" class="text-danger">
                     Nombre de Habilidad es requerido.
@@ -212,8 +213,8 @@
                 </div>
               </div>
               <div class="mb-1">
-                  <label for="habPorcentaje" class="form-label" >Porcentaje</label>
-                  <input type="text" class="form-control" id="habPorcentaje"  formControlName="edicionPorcentaje">
+                  <label for="hDurasPorcentaje" class="form-label" >Porcentaje</label>
+                  <input type="text" class="form-control" id="hDurasPorcentaje"  formControlName="edicionPorcentaje">
                   <div *ngIf="habPorcentaje?.invalid && habPorcentaje?.touched">
                       <div *ngIf="habPorcentaje?.errors?.['required']" class="text-danger">
                        Porcentaje es requerido.

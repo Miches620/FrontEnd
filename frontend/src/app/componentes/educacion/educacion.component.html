@@ -6,10 +6,10 @@
       <div *ngFor="let item of educacion" class="col-lg-4 mt-4">
         <div class="card servicesText">
           <div class="card-body">
-            <button *ngIf="usuarioAutentificado"  id="editarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModalEditar" (click)="mostrarDatos(item.id)">
+            <button id="editarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModalEditar" (click)="mostrarDatos(item.id)">
               <i class="fas servicesIcon fa-feather"></i>
             </button>
-            <button *ngIf="usuarioAutentificado" id="eliminarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModalBorrar" (click)="almacenarPosicion(item.posicion)">
+            <button id="eliminarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModalBorrar" (click)="almacenarPosicion(item.posicion)">
               <i class="fas servicesIcon fa-trash"></i>
             </button>
             <div class="icono">

@@ -13,13 +13,13 @@ export class AcercaDeComponent implements OnInit {
   nombre:any
   edad:any
   titulo:any
-
-  usuarioAutentificado: boolean = true;
   editarAbout: FormGroup;
   constructor(
     private servicio: ObtenerDatosAcercaDe,
     private aboutFormBuilder: FormBuilder
   ) {
+
+
     this.editarAbout = this.aboutFormBuilder.group({
       edicionNombre: ['', [Validators.required, Validators.minLength(5)]],
       edicionEdad: ['', [Validators.required, Validators.maxLength(2)]],
@@ -45,6 +45,7 @@ export class AcercaDeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.servicio.obtenerAcercaDe().subscribe((data) => {
       this.persona = data;
       this.imagen=this.persona['img'];
