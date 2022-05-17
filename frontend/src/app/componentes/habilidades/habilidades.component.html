@@ -44,9 +44,9 @@
                   <div class="mb-1">
                     <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
                     <div *ngFor="let item of hBlandas">
-                      <input type="radio" id="habItem" name="drone" value="{{item.habilidad}}" 
+                      <input type="radio" id="habBItem" name="drone" value="{{item.habilidad}}" 
                             (click)="almacenarItem(item.id)">
-                      <label for="habItem">{{item.habilidad}}</label>
+                      <label for="habBItem">{{item.habilidad}}</label>
                     </div>
                   </div>
                 </form>
@@ -174,9 +174,9 @@
               <div class="mb-1">
                 <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
                 <div *ngFor="let item of hDuras">
-                  <input type="radio" id="habItem" name="drone" value="{{item.habilidad}}" 
+                  <input type="radio" id="habDItem" name="drone" value="{{item.habilidad}}" 
                         (click)="almacenarItem(item.id)">
-                  <label for="habItem">{{item.habilidad}}</label>
+                  <label for="habDItem">{{item.habilidad}}</label>
                 </div>
               </div>
             </form>

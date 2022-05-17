@@ -1,7 +1,7 @@
 {
   "login": {
     "email": "miches_620@hotmail.com",
-    "password": "35794796"
+    "password": "35794796sm"
   },
   "persona": {
     "nombre": "Santiago Michelena",
@@ -142,18 +142,18 @@
   ],
   "proyectos": [
     {
-      "img":"./assets/imagenes/pro1.jpeg",
-      "proyecto":"Booleana",
-      "descripcion":"Sistema de automatizacion de equipos cerveceros",
-      "estado":"En Proceso",
-      "id":0
-  },
-  {
-      "img":"./assets/imagenes/pro2.jpeg",
-      "proyecto":"Auto-Clean",
-      "descripcion":"Sistema de automatizacion de limpieza C.I.P multirubro",
-      "estado":"En Proceso",
-      "id":1
-  }
+      "img": "./assets/imagenes/pro1.jpeg",
+      "proyecto": "Booleana",
+      "descripcion": "Sistema de automatizacion de equipos cerveceros",
+      "estado": "En Proceso",
+      "id": 0
+    },
+    {
+      "img": "./assets/imagenes/pro2.jpeg",
+      "proyecto": "Auto-Clean",
+      "descripcion": "Sistema de automatizacion de limpieza C.I.P multirubro",
+      "estado": "En Proceso",
+      "id": 1
+    }
   ]
 }

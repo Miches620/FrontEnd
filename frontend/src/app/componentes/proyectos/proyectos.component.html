@@ -120,9 +120,9 @@
               <div class="mb-1">
                 <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
                 <div *ngFor="let item of proyectos">
-                  <input type="radio" id="habItem" name="drone" value="{{item.proyecto}}" 
+                  <input type="radio" id="proItem" name="drone" value="{{item.proyecto}}" 
                         (click)="almacenarItem(item.id)">
-                  <label for="habItem">{{item.proyecto}}</label>
+                  <label for="proItem">{{item.proyecto}}</label>
                 </div>
               </div>
             </form>
