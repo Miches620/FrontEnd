@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Getter;
+import lombok.Setter;
+@Setter
 @Getter
 @Entity
 public class Proyectos {
@@ -25,18 +27,6 @@ public class Proyectos {
     }
 
     public Proyectos() {
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public void setProyecto(String proyecto) {
-        this.proyecto = proyecto;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
 }

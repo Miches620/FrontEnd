@@ -23,5 +23,10 @@ public class ExperienciaServicio {
     public List<Experiencia> mostrarExperiencia(){
       return  experienciaRepo.findAll();
     }
+    
+    public Experiencia encontrarExperiencia(Long id){
+        Experiencia experiencia = experienciaRepo.findById(id).orElse(null);
+        return experiencia;
+    }
 }
 

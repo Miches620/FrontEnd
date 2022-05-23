@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Getter;
+import lombok.Setter;
+@Setter
 @Getter
 @Entity
 public class HabilidadesDuras {
@@ -24,14 +26,5 @@ public class HabilidadesDuras {
 
     public HabilidadesDuras() {
     }
-
-    public void setHabilidad(String habilidad) {
-        this.habilidad = habilidad;
-    }
-
-    public void setPorcentaje(int porcentaje) {
-        this.porcentaje = porcentaje;
-    }
-
 
 }

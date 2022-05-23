@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Getter;
+import lombok.Setter;
 @Getter
 @Entity
+@Setter
 public class Educacion {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,28 +30,8 @@ public class Educacion {
         this.web = web;
     }
 
-    public Educacion() {
-    }
+    public Educacion() {}
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public void setIcono(String icono) {
-        this.icono = icono;
-    }
-
-    public void setInstitucion(String institucion) {
-        this.institucion = institucion;
-    }
-
-    public void setAnio(int anio) {
-        this.anio = anio;
-    }
-
-    public void setWeb(String web) {
-        this.web = web;
-    }
-
+    
     
 }   

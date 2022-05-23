@@ -11,17 +11,22 @@ public class HabilidadesBlandasServicio {
     @Autowired
     HabilidadesBlandasRepositorio habilidadesBlandasRepo;
     
-    public void crearHabilidadesBlandas(HabilidadesBlandas habilidadesBlandas)
+    public void crearHabilidadBlanda(HabilidadesBlandas habilidadesBlandas)
     {
         habilidadesBlandasRepo.save(habilidadesBlandas);
     }
     
-    public void borrarHabilidadesBlandas(Long id){
+    public void borrarHabilidadBlanda(Long id){
         habilidadesBlandasRepo.deleteById(id);
     }
     
     public List<HabilidadesBlandas> mostrarHabilidadesBlandas(){
       return  habilidadesBlandasRepo.findAll();
+    }
+    
+    public HabilidadesBlandas encontrarHBlanda(Long id){
+        HabilidadesBlandas hBlandas = habilidadesBlandasRepo.findById(id).orElse(null);
+        return hBlandas;
     }
 }
 

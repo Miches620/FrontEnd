@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class EducacionServicio {
     @Autowired
     EducacionRepositorio educacionRepo;
-    
+   
     public void crearEducacion(Educacion educacion)
     {
         educacionRepo.save(educacion);
@@ -23,5 +23,11 @@ public class EducacionServicio {
     public List<Educacion> mostrarEducacion(){
       return  educacionRepo.findAll();
     }
+
+    public Educacion encontrarEducacion(Long id){
+        Educacion educacion = educacionRepo.findById(id).orElse(null);
+        return educacion;
+    }
+  
 }
 

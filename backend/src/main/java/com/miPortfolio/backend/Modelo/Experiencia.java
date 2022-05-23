@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Getter;
+import lombok.Setter;
 @Getter
 @Entity
+@Setter
 public class Experiencia {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -27,17 +29,6 @@ public class Experiencia {
     public Experiencia() {
     }
 
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
-    }
-
-    public void setPuesto(String puesto) {
-        this.puesto = puesto;
-    }
 
 
 }

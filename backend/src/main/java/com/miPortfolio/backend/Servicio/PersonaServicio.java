@@ -20,7 +20,12 @@ public class PersonaServicio {
         personaRepo.deleteById(id);
     }
     
-    public List<Persona> mostrarPersona(){
+    /*public List<Persona> mostrarListaDePersona(){
       return  personaRepo.findAll();
+    }*/
+    
+    public Persona encontrarPersona(long id){
+        Persona per = personaRepo.findById(id).orElse(null);
+        return per;
     }
 }

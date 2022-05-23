@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Getter;
+import lombok.Setter;
+@Setter
 @Getter
 @Entity
 public class Persona {
@@ -27,22 +29,6 @@ public class Persona {
     }
 
     public Persona() {
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
     }
 
 }

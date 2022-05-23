@@ -11,16 +11,21 @@ public class HabilidadesDurasServicio {
     @Autowired
     HabilidadesDurasRepositorio habilidadesDurasRepo;
     
-    public void crearHabilidadesDuras(HabilidadesDuras habilidadesDuras)
+    public void crearHabilidadDura(HabilidadesDuras habilidadesDuras)
     {
         habilidadesDurasRepo.save(habilidadesDuras);
     }
     
-    public void borrarHabilidadesDuras(Long id){
+    public void borrarHabilidadDura(Long id){
         habilidadesDurasRepo.deleteById(id);
     }
     
     public List<HabilidadesDuras> mostrarHabilidadesDuras(){
       return  habilidadesDurasRepo.findAll();
+    }
+    
+     public HabilidadesDuras encontrarHDura(Long id){
+        HabilidadesDuras hDuras = habilidadesDurasRepo.findById(id).orElse(null);
+        return hDuras;
     }
 }

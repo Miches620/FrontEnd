@@ -11,9 +11,9 @@ public class ProyectosServicio {
     @Autowired
     ProyectosRepositorio proyectosRepo;
     
-    public void crearProyectos(Proyectos proyectos)
+    public void crearProyecto(Proyectos proyecto)
     {
-        proyectosRepo.save(proyectos);
+        proyectosRepo.save(proyecto);
     }
     
     public void borrarProyectos(Long id){
@@ -22,6 +22,11 @@ public class ProyectosServicio {
     
     public List<Proyectos> mostrarProyectos(){
       return  proyectosRepo.findAll();
+    }
+    
+    public Proyectos encontrarProyecto(long id){
+        Proyectos proyecto = proyectosRepo.findById(id).orElse(null);
+        return proyecto;
     }
 }
 
