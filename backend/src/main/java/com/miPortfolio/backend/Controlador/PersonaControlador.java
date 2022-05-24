@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @CrossOrigin(origins ={"http://localhost:4200"})
 public class PersonaControlador {
@@ -32,19 +33,10 @@ public void crearPersona(@RequestBody Persona persona){
 }
 
 @PutMapping("/persona/editar/{id}")
-public Persona editarExperiencia(@RequestBody Persona persona, @PathVariable Long id){
+public void editarExperiencia(@RequestBody Persona persona, @PathVariable Long id){
     
-    Persona per= personaServ.encontrarPersona(id);
-
-    per.setNombre(persona.getNombre());
-    per.setEdad(persona.getEdad());
-    per.setTitulo(persona.getTitulo());
-   
-   personaServ.crearPersona(per);
-   return per;
+   personaServ.editarPersona(persona);
 }
-
-
 @DeleteMapping("/persona/{id}")
 public void borrarPersona(@PathVariable Long id){
     personaServ.borrarPersona(id);

@@ -21,14 +21,14 @@ public class ExperienciaControlador {
 @Autowired
 ExperienciaServicio experienciaServ;
   
-@GetMapping("/experiencia/mostrar/")
+@GetMapping("/experiencia/mostrar")
 @ResponseBody
 public List<Experiencia> mostrarExperiencia(){
     
     return experienciaServ.mostrarExperiencia();
 }
 
-@PostMapping("/experiencia/crear/")
+@PostMapping("/experiencia/crear")
 public void crearExperiencia(@RequestBody Experiencia experiencia){
     experienciaServ.crearExperiencia(experiencia);
 }
