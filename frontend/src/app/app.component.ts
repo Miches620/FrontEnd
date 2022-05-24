@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Mi Portfolio';
+  private isButtonVisible = true;
+
+  constructor() {
+    sessionStorage.setItem('modoEditor', 'false');
+  }
+
 }

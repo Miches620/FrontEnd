@@ -7,18 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ExperienciaService {
-
+  url:string="http://localhost:8080/experiencia"
   constructor(private http: HttpClient) { }
 
   /*Experiencia*/
   obtenerExperiencia(): Observable<any> {
-    return this.http.get('http://localhost:3000/experiencia/');
+    return this.http.get(this.url+'/mostrar');
   }
   editarDatosExperiencia(id:number,experiencia:Experiencia):Observable<any>{
-    return this.http.put('http://localhost:3000/experiencia/'+id,experiencia);/*sv de prueba. reemplazar*/
+    return this.http.put(this.url+'/editar/'+id,experiencia);
   }
 
   borrarDatosExperiencia(id:number):Observable<any>{
-    return this.http.delete('http://localhost:3000/experiencia/'+id);
+    return this.http.delete(this.url+'/'+id);
   }
 }

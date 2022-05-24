@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Educacion } from 'src/app/entidades/educacion';
 import { EducacionService } from 'src/app/servicios/educacion.service';
+import { ObtenerDatosService } from 'src/app/servicios/obtener-datos.service';
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
@@ -11,7 +12,9 @@ export class EducacionComponent implements OnInit {
 educacion:any
 idActual:any
 editarEducacion: FormGroup;
-  constructor(private servicio:EducacionService, private eduFormBuilder: FormBuilder) { 
+edu:any
+modoEditor:any
+  constructor(private servicio:EducacionService, private eduFormBuilder: FormBuilder, private login:ObtenerDatosService) { 
 
     this.editarEducacion = this.eduFormBuilder.group({
       edicionIcono: ['fa-', [Validators.required,Validators.minLength(5)]],
@@ -45,12 +48,14 @@ editarEducacion: FormGroup;
 
 
   ngOnInit(): void {
+    this.login.iniciarSesion.subscribe(data =>{
+      this.modoEditor=true;
+    })
+    this.login.cerrarSesion.subscribe(data =>{
+      this.modoEditor=false;
+    })
     this.servicio.obtenerEducacion().subscribe(data=>{
       
-      for(let item of data){
-       item['posicion']=data.indexOf(item);
-    }
-    /*console.log(data)*/
       this.educacion=data;
     })
   }
@@ -67,12 +72,12 @@ editarEducacion: FormGroup;
     let anio=this.editarEducacion.get("edicionAnio")?.value;
     let web=this.editarEducacion.get("edicionWeb")?.value;
 
-    let editarEducacion= new Educacion(icono,titulo,institucion,anio,web)
+    let editarEducacion= new Educacion(this.idActual,icono,titulo,institucion,anio,web)
     this.servicio.editarDatosEducacion(this.idActual,editarEducacion).subscribe({
       next: (data) =>{
-      this.educacion[this.idActual]=editarEducacion;
+      this.educacion[this.edu]=editarEducacion;
+      this.ngOnInit();
       document.getElementById('cerrarEducacion')?.click();
-      this.educacion[this.idActual]['id']=this.idActual;
       },
     error: (error) =>{
       alert("Error al intentar actualizar los datos. Por favor intente nuevamente");
@@ -87,24 +92,24 @@ else{
 }
   }
 
-  mostrarDatos(i:number) {
-    this.editarEducacion.get('edicionIcono')?.setValue(this.educacion[i].icono);
-    this.editarEducacion.get('edicionTitulo')?.setValue(this.educacion[i].titulo);
-    this.editarEducacion.get('edicionInstitucion')?.setValue(this.educacion[i].institucion);
-    this.editarEducacion.get('edicionAnio')?.setValue(this.educacion[i].anio);
-     this.editarEducacion.get('edicionWeb')?.setValue(this.educacion[i].web);
-     this.idActual=this.educacion[i]['id'];
+  mostrarDatos(edu:Educacion) {
+    this.edu=edu;
+    this.editarEducacion.get('edicionIcono')?.setValue(edu['icono']);
+    this.editarEducacion.get('edicionTitulo')?.setValue(edu['titulo']);
+    this.editarEducacion.get('edicionInstitucion')?.setValue(edu['institucion']);
+    this.editarEducacion.get('edicionAnio')?.setValue(edu['anio']);
+     this.editarEducacion.get('edicionWeb')?.setValue(edu['web']);
+     this.idActual=edu['id'];
   }
 
-  almacenarPosicion(i:number){
-    this.idActual=this.educacion[i]['id'];
+  almacenarId(edu:Educacion){
+    this.idActual=edu['id'];
     console.log(this.idActual);
   }
 
   eliminar(){
     this.servicio.borrarDatosEducacion(this.idActual).subscribe({
       next: (data) =>{
-        console.log("se borro id:" + this.idActual);
         document.getElementById('cerrarBorrarEducacion')?.click();
         this.idActual=null;
       this.ngOnInit();

@@ -2,8 +2,8 @@
 <section id="proyectos">
     <div class="container mt-3">
         <h1 class="text-center">Proyectos 
-          <button  id="editarProyectos" data-bs-toggle="modal" data-bs-target="#proyectoModalEditar"><i class='fas servicesIcon fa-feather'></i></button>
-          <button  id="eliminarProyectos" data-bs-toggle="modal" data-bs-target="#ProyectosModalBorrar"><i class='fas servicesIcon fa-trash'></i></button>
+          <button  *ngIf="this.modoEditor" id="editarProyectos" data-bs-toggle="modal" data-bs-target="#proyectoModalEditar"><i class='fas servicesIcon fa-feather'></i></button>
+          <button  *ngIf="this.modoEditor" id="eliminarProyectos" data-bs-toggle="modal" data-bs-target="#ProyectosModalBorrar"><i class='fas servicesIcon fa-trash'></i></button>
         </h1>
         <div class="row">
             <div *ngFor="let item of proyectos" class="portaproyecto col-lg-4 mt-4">
@@ -39,7 +39,7 @@
                 <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
                     <div *ngFor="let item of proyectos">
                       <input type="radio" id="habItem" name="drone" value="{{item.proyecto}}" 
-                            (click)="almacenarItem(item.id)">
+                            (click)="almacenarItem(item)">
                       <label for="habItem">{{item.proyecto}}</label>
                     </div>
                   </div>
@@ -121,7 +121,7 @@
                 <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
                 <div *ngFor="let item of proyectos">
                   <input type="radio" id="proItem" name="drone" value="{{item.proyecto}}" 
-                        (click)="almacenarItem(item.id)">
+                        (click)="almacenarItem(item)">
                   <label for="proItem">{{item.proyecto}}</label>
                 </div>
               </div>

@@ -7,20 +7,16 @@ import { Persona } from '../entidades/persona';
   providedIn: 'root',
 })
 export class ObtenerDatosAcercaDe {
-
+url:string="http://localhost:8080/persona"
   constructor(private http: HttpClient) {
   
   }
 /*AcercaDe*/
-  obtenerAcercaDe(): Observable<any> {
-    return this.http.get('http://localhost:3000/persona');
+  obtenerAcercaDe(id:number): Observable<any> {
+    return this.http.get(this.url+'/'+id);
   }
   editarDatosAcercaDe(persona:Persona):Observable<any>{
-    return this.http.post('http://localhost:3000/persona',persona);/*sv de prueba. reemplazar*/
-  }
-
-  obtenerAccesoDeEditor():Observable<any>{
-    return this.http.get('http://localhost:3000/login');
+    return this.http.put(this.url+'/editar/'+1, persona);
   }
  
 }

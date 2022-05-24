@@ -1,12 +1,12 @@
-export class Login{
-    private usuario:String;
-    private contraseña:Int8Array;
-    private estado:boolean
+export class Login {
+    private id:number;
+    private user:String;
+    private pwd:String;
 
-constructor(usuario:String, contraseña:Int8Array, estado:boolean){
-    this.usuario=usuario;
-    this.contraseña=contraseña;
-    this.estado=estado;
-}
 
+    constructor(id:number, user:String, pwd:String) {
+        this.id = id;
+        this.user = user;
+        this.pwd = pwd;
+    }
 }

@@ -1,7 +1,9 @@
+import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Persona } from 'src/app/entidades/persona';
 import { ObtenerDatosAcercaDe } from 'src/app/servicios/AcercaDeService';
+import { ObtenerDatosService } from 'src/app/servicios/obtener-datos.service';
 @Component({
   selector: 'app-acerca-de',
   templateUrl: './acerca-de.component.html',
@@ -13,9 +15,12 @@ export class AcercaDeComponent implements OnInit {
   nombre:any
   edad:any
   titulo:any
+  id:any
   editarAbout: FormGroup;
+  modoEditor:any
   constructor(
     private servicio: ObtenerDatosAcercaDe,
+    private login:ObtenerDatosService,
     private aboutFormBuilder: FormBuilder
   ) {
 
@@ -45,13 +50,19 @@ export class AcercaDeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    this.servicio.obtenerAcercaDe().subscribe((data) => {
+    this.login.iniciarSesion.subscribe(data =>{
+      this.modoEditor=true;
+    })
+    this.login.cerrarSesion.subscribe(data =>{
+      this.modoEditor=false;
+    })
+    this.servicio.obtenerAcercaDe(1).subscribe((data) => {
       this.persona = data;
       this.imagen=this.persona['img'];
       this.nombre=this.persona['nombre'];
       this.edad=this.persona['edad'];
       this.titulo=this.persona['titulo'];
+      this.id=this.persona['id'];
     });
   }
 
@@ -65,13 +76,14 @@ export class AcercaDeComponent implements OnInit {
       let edad = this.editarAbout.get('edicionEdad')?.value;
       let titulo = this.editarAbout.get('edicionTitulo')?.value;
       let img = this.editarAbout.get('edicionImagen')?.value;
-      let Editarpersona = new Persona(nombre, edad, titulo, img);
+
+      let Editarpersona = new Persona (this.id ,nombre, edad, titulo, img);
       this.servicio.editarDatosAcercaDe(Editarpersona).subscribe({
         next: (data) => {
           this.persona = Editarpersona;
           this.editarAbout.reset();
-          document.getElementById('cerrarAbout')?.click();
           this.ngOnInit();
+          document.getElementById('cerrarAbout')?.click();
         },
         error: (error) => {
           alert(

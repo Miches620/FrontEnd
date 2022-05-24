@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
@@ -11,9 +11,6 @@ import { HabilidadesComponent } from './componentes/habilidades/habilidades.comp
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './componentes/login/login.component';
-import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
-import { InterceptorService } from './servicios/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +21,7 @@ import { InterceptorService } from './servicios/interceptor.service';
     ExperienciaComponent,
     HabilidadesComponent,
     ProyectosComponent,
-    ContactoComponent,
-    LoginComponent,
-    PortfolioComponent
+    ContactoComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +29,7 @@ import { InterceptorService } from './servicios/interceptor.service';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [{provide:HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,8 +6,8 @@
             <div *ngFor="let item of experiencia" class="col-lg-4 mt-4">
                 <div class="laburo card">
                     <img class="card-img-top" [src]="item.logo" alt="2011" style="width:100%; height:auto">
-                    <button id="editarExperiencia" data-bs-toggle="modal" data-bs-target="#experienciaModalEditar" (click)="mostrarDatos(item.id)"><i class='fas servicesIcon fa-feather'></i></button>
-                    <button id="eliminarExperiencia" data-bs-toggle="modal" data-bs-target="#experienciaModalBorrar" (click)="almacenarPosicion(item.posicion)"><i class='fas servicesIcon fa-trash'></i></button>
+                    <button *ngIf="this.modoEditor" id="editarExperiencia" data-bs-toggle="modal" data-bs-target="#experienciaModalEditar" (click)="mostrarDatos(item)"><i class='fas servicesIcon fa-feather'></i></button>
+                    <button *ngIf="this.modoEditor" id="eliminarExperiencia" data-bs-toggle="modal" data-bs-target="#experienciaModalBorrar" (click)="almacenarId(item)"><i class='fas servicesIcon fa-trash'></i></button>
                     <div class="card-body">
                         <h4 class="card-title text-center"id="trabajo">{{item.empresa}}</h4>
                         <p class="card-text text-center"id="puesto">{{item.puesto}}</p>
@@ -29,8 +29,8 @@
         <div class="modal-body">
             <form [formGroup]="editarExperiencia">
                 <div class="mb-1">
-                  <label for="expLogo" class="form-label" >Logo de Empresa</label>
-                  <input type="text" class="form-control" id="expLogo"  formControlName="edicionLogo">
+                  <label for="experienciaLogo" class="form-label" >Logo de Empresa</label>
+                  <input type="text" class="form-control" id="experienciaLogo"  formControlName="edicionLogo">
                   <div *ngIf="expLogo?.invalid && expLogo?.touched">
                     <div *ngIf="expLogo?.errors?.['minlenght']" class="text-danger">
                       Debera especificar la ruta de la imagen mediante web ('https://') o link local.

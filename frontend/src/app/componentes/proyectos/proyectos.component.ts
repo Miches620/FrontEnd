@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProyectosService } from 'src/app/servicios/proyectos.service';
 import { Proyectos } from 'src/app/entidades/proyectos';
+import { ObtenerDatosService } from 'src/app/servicios/obtener-datos.service';
 
 @Component({
   selector: 'app-proyectos',
@@ -13,7 +14,9 @@ export class ProyectosComponent implements OnInit {
   editarProyectos:FormGroup
   idActual:any
   boton:boolean=false
-  constructor(private servicio:ProyectosService,private proFormBuilder: FormBuilder) { 
+  pro:any
+  modoEditor:any
+  constructor(private servicio:ProyectosService,private proFormBuilder: FormBuilder, private login: ObtenerDatosService) { 
 
     this.editarProyectos = this.proFormBuilder.group({
       edicionImg: ['',Validators.minLength(5)],
@@ -36,6 +39,12 @@ export class ProyectosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.login.iniciarSesion.subscribe(data =>{
+      this.modoEditor=true;
+    })
+    this.login.cerrarSesion.subscribe(data =>{
+      this.modoEditor=false;
+    })
     this.servicio.obtenerProyectos().subscribe(data=>{
       this.proyectos=data;
       this.boton=false;
@@ -43,13 +52,17 @@ export class ProyectosComponent implements OnInit {
 }
 
 editarPro(){
-  this.editarProyectos.get('edicionImg')?.setValue(this.proyectos[this.idActual].img);
-  this.editarProyectos.get('edicionProyecto')?.setValue(this.proyectos[this.idActual].proyecto);
-   this.editarProyectos.get('edicionDescripcion')?.setValue(this.proyectos[this.idActual].descripcion);
+  let img = this.pro['img'];
+  let proyecto = this.pro['proyecto'];
+  let desc = this.pro['descripcion'];
+  this.editarProyectos.get('edicionImg')?.setValue(img);
+  this.editarProyectos.get('edicionProyecto')?.setValue(proyecto);
+   this.editarProyectos.get('edicionDescripcion')?.setValue(desc);
 }
 
-almacenarItem(i:number){
-  this.idActual=i;
+almacenarItem(pro:Proyectos){
+  this.pro=pro;
+  this.idActual=pro['id'];
   this.boton=true;
 }
 
@@ -64,12 +77,12 @@ guardarProyecto(){
   let descripcion=this.editarProyectos.get("edicionDescripcion")?.value;
   
 
-  let editarProyectos= new Proyectos(imagen,proyecto,descripcion)
+  let editarProyectos= new Proyectos(this.idActual, imagen,proyecto,descripcion)
   this.servicio.editarDatosProyectos(this.idActual,editarProyectos).subscribe({
     next: (data) =>{
-      this.proyectos[this.idActual]=editarProyectos;
+      this.proyectos[this.pro]=editarProyectos;
+      this.ngOnInit();
     document.getElementById('cerrarEditarProyecto')?.click();
-    this.proyectos[this.idActual]['id']=this.idActual;
     },
   error: (error) =>{
     alert("Error al intentar actualizar los datos. Por favor intente nuevamente");
@@ -87,7 +100,6 @@ this.editarProyectos.markAllAsTouched();
 eliminarProyecto(){
   this.servicio.borrarDatosProyectos(this.idActual).subscribe({
     next: (data) =>{
-      console.log("se borro id:" + this.idActual);
       document.getElementById('cerrarBorrarProyectos')?.click();
       this.idActual=null;
       this.ngOnInit();

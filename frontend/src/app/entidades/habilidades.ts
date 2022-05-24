@@ -1,12 +1,12 @@
 export class Habilidades{
+    private id:number;
     private habilidad:String;
-    private porcentaje:Int8Array;
-    private posicion:Int8Array;
+    private porcentaje:number;
 
-constructor(habilidad:String, porcentaje:Int8Array, posicion:Int8Array){
+constructor(id:number, habilidad:String, porcentaje:number){
+    this.id=id;
     this.habilidad=habilidad;
     this.porcentaje=porcentaje;
-    this.posicion=posicion;
 }
 
 }

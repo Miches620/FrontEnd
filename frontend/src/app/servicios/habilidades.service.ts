@@ -7,28 +7,29 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HabilidadesService {
-
+  url1:string="http://localhost:8080/hBlandas"
+  url2:string="http://localhost:8080/hDuras"
   constructor(private http: HttpClient) { }
 
   /*Habilidades*/
   obtenerHabilidadesBlandas(): Observable<any> {
-    return this.http.get('http://localhost:3000/habilidadesBlandas');
+    return this.http.get(this.url1+'/mostrar');
   }
 
   obtenerHabilidadesDuras(): Observable<any> {
-    return this.http.get('http://localhost:3000/habilidadesDuras');
+    return this.http.get(this.url2+'/mostrar');
   }
   editarHBlandas(id:number,habilidades:Habilidades):Observable<any>{
-    return this.http.put('http://localhost:3000/habilidadesBlandas/'+id,habilidades);/*sv de prueba. reemplazar*/
+    return this.http.put(this.url1+'/editar/'+id,habilidades);
   }
 
   editarHDuras(id:number,habilidades:Habilidades):Observable<any>{
-    return this.http.put('http://localhost:3000/habilidadesDuras/'+id,habilidades);/*sv de prueba. reemplazar*/
+    return this.http.put(this.url2+'/editar/'+id,habilidades);
   }
   borrarHBlandas(id:number):Observable<any>{
-    return this.http.delete('http://localhost:3000/habilidadesBlandas/'+id);
+    return this.http.delete(this.url1+'/'+id);
   }
   borrarHDuras(id:number):Observable<any>{
-    return this.http.delete('http://localhost:3000/habilidadesDuras/'+id);
+    return this.http.delete(this.url2+'/'+id);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExperienciaService } from 'src/app/servicios/experiencia.service';
 import { Experiencia } from 'src/app/entidades/experiencia';
+import { ObtenerDatosService } from 'src/app/servicios/obtener-datos.service';
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
@@ -11,7 +12,9 @@ export class ExperienciaComponent implements OnInit {
 experiencia:any
 idActual:any
 editarExperiencia:FormGroup
-  constructor(private servicio:ExperienciaService, private expFormBuilder: FormBuilder) {
+exp:any
+modoEditor:any
+  constructor(private servicio:ExperienciaService, private expFormBuilder: FormBuilder, private login:ObtenerDatosService) {
 
     this.editarExperiencia = this.expFormBuilder.group({
       edicionLogo: ['./assets/imagenes/????', Validators.minLength(5)],
@@ -34,11 +37,13 @@ editarExperiencia:FormGroup
 
 
   ngOnInit(): void {
+    this.login.iniciarSesion.subscribe(data =>{
+      this.modoEditor=true;
+    })
+    this.login.cerrarSesion.subscribe(data =>{
+      this.modoEditor=false;
+    })
     this.servicio.obtenerExperiencia().subscribe(data=>{
-      
-      for(let item of data){
-        item['posicion']=data.indexOf(item);
-     }
       this.experiencia=data;
     })
   }
@@ -53,12 +58,12 @@ editarExperiencia:FormGroup
     let empresa=this.editarExperiencia.get("edicionEmpresa")?.value;
     let puesto=this.editarExperiencia.get("edicionPuesto")?.value;
 
-    let editarExperiencia= new Experiencia(logo,empresa,puesto)
+    let editarExperiencia= new Experiencia(this.idActual,logo,empresa,puesto)
     this.servicio.editarDatosExperiencia(this.idActual,editarExperiencia).subscribe({
       next: (data) =>{
-      this.experiencia[this.idActual]=editarExperiencia;
+      this.experiencia[this.exp]=editarExperiencia;
+      this.ngOnInit();
       document.getElementById('cerrarExperiencia')?.click();
-      this.experiencia[this.idActual]['id']=this.idActual;
       },
     error: (error) =>{
       alert("Error al intentar actualizar los datos. Por favor intente nuevamente");
@@ -73,24 +78,20 @@ else{
 }
   }
 
-  mostrarDatos(i:number) {
-    this.editarExperiencia.get('edicionIcono')?.setValue(this.experiencia[i].icono);
-    this.editarExperiencia.get('edicionTitulo')?.setValue(this.experiencia[i].titulo);
-    this.editarExperiencia.get('edicionInstitucion')?.setValue(this.experiencia[i].institucion);
-    this.editarExperiencia.get('edicionAnio')?.setValue(this.experiencia[i].anio);
-     this.editarExperiencia.get('edicionWeb')?.setValue(this.experiencia[i].web);
-     this.idActual=this.experiencia[i]['id'];
+  mostrarDatos(exp:Experiencia) {
+    this.exp=exp;
+    this.editarExperiencia.get('edicionLogo')?.setValue(exp['logo']);
+    this.editarExperiencia.get('edicionEmpresa')?.setValue(exp['empresa']);
+    this.editarExperiencia.get('edicionPuesto')?.setValue(exp['puesto']);
+    this.idActual=exp['id'];
   }
-
-  almacenarPosicion(i:number){
-    this.idActual=this.experiencia[i]['id'];
-    console.log(this.idActual);
+  almacenarId(exp:Experiencia){
+    this.idActual=exp['id'];
   }
 
   eliminar(){
     this.servicio.borrarDatosExperiencia(this.idActual).subscribe({
       next: (data) =>{
-        console.log("se borro id:" + this.idActual);
         document.getElementById('cerrarBorrarExperiencia')?.click();
         this.idActual=null;
       this.ngOnInit();

@@ -7,18 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProyectosService {
-
+  url:string="http://localhost:8080/proyectos"
   constructor(private http: HttpClient) { }
 
   /*Proyectos*/
   obtenerProyectos():Observable<any> {
-    return this.http.get('http://localhost:3000/proyectos/');
+    return this.http.get(this.url+'/mostrar');
   }
   editarDatosProyectos(id:number,proyecto:Proyectos):Observable<any>{
-    return this.http.put('http://localhost:3000/proyectos/'+id,proyecto);/*sv de prueba. reemplazar*/
+    return this.http.put(this.url+'/editar/'+id,proyecto);
   }
 
   borrarDatosProyectos(id:number):Observable<any>{
-    return this.http.delete('http://localhost:3000/proyectos/'+id);
+    return this.http.delete(this.url+'/'+id);
   }
 }

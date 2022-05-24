@@ -6,11 +6,11 @@
     text-decoration: underline;
   }
   
-  #login{
+  #login, #logout{
       border: .1px #33bbeb solid;
   }
   
-  #login:hover {
+  #login:hover, #logout:hover {
       border: .1px #59c9f1 solid;
       transform: scale(.9);
       transition: .5s;

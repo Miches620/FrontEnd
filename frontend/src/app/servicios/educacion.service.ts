@@ -7,18 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EducacionService {
-
+  url:string="http://localhost:8080/educacion"
   constructor(private http: HttpClient) { }
 
   /*Educacion*/
   obtenerEducacion(): Observable<any> {
-    return this.http.get('http://localhost:3000/educacion/');
+    return this.http.get(this.url+'/mostrar');
   }
   editarDatosEducacion(id:number,educacion:Educacion):Observable<any>{
-    return this.http.put('http://localhost:3000/educacion/'+id,educacion);/*sv de prueba. reemplazar*/
+    return this.http.put(this.url+'/editar/'+id,educacion);
   }
 
   borrarDatosEducacion(id:number):Observable<any>{
-    return this.http.delete('http://localhost:3000/educacion/'+id);
+    return this.http.delete(this.url+'/'+id);
   }
 }

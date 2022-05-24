@@ -1,12 +1,14 @@
 export class Educacion{
+    private id:number;
     private icono:String;
     private titulo:String;
     private institucion:String;
-    private anio:Int8Array;
+    private anio:number;
     private web:String;
 
 
-constructor(icono:String, titulo:String, institucion:String, anio:Int8Array, web:String){
+constructor(id:number,icono:String, titulo:String, institucion:String, anio:number, web:String){
+    this.id=id;
     this.icono=icono;
     this.titulo=titulo;
     this.institucion=institucion;

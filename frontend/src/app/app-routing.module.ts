@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './componentes/login/login.component';
-import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
-import { GuardGuard } from './servicios/guard.guard';
-const routes: Routes = [
-  {path:'portfolio',component:PortfolioComponent, canActivate:[GuardGuard]},
-  {path:'login',component:LoginComponent},
-  {path:'',redirectTo:'login',pathMatch:'full'}
-];
+
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
