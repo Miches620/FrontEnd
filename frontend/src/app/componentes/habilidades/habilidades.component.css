@@ -21,3 +21,15 @@
 display: flex;
 justify-content: flex-end;
 }
+
+@keyframes animate{
+  0%{
+      background-position: 0 0;
+  }
+  50%{
+      background-position:calc(1em *3) 0;
+  }
+  100%{
+      background-position:calc(1em *6) 0;
+  }
+}

@@ -1,14 +1,15 @@
-export class Persona{
+export class Persona {
+    private id:number;
     private nombre:String;
-    private edad:Int8Array;
+    private edad:number;
     private titulo:String;
-    private img:String
+    private img:String;
 
-constructor(nombre:String, edad:Int8Array, titulo:String, img:String){
-    this.nombre=nombre;
-    this.edad=edad;
-    this.titulo=titulo;
-    this.img=img;
-}
-
+    constructor(id:number, nombre:String,edad:number, titulo:String, img:String) {
+        this.id = id;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.titulo = titulo;
+        this.img = img;
+    }
 }

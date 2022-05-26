@@ -1,21 +1,21 @@
 <!-- acercade-->
 <section id="acercade">
-    <div class="container mt-4 pt-4">
+    <div  class="container mt-4 pt-4">
         <div class="titulo">
             <h1 class="text-center">Acerca de mi</h1>
-            <button *ngIf="usuarioAutentificado" id="editarAcercaDe" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class='fas servicesIcon fa-feather'></i></button>
+            <button id="editarAcercaDe" *ngIf="this.modoEditor" data-bs-toggle="modal" data-bs-target="#aboutModal" (click)="mostrarDatos()"><i class='fas servicesIcon fa-feather'></i></button>
         </div>
         <div class="row mt-4">
             <div class="col-lg-4">
-                <img [src]="persona.img" class= "imageAboutPage" alt="yo">
+                <img [src]="imagen" class= "imageAboutPage" alt="yo">
             </div>
             <div class="col-lg-8">
                 <div class="row mt-3">
                     <div class="col-md-6">
                         <ul>
-                            <li>Nombre:<h6 id="nombre">{{persona.nombre}}</h6></li>
-                            <li>Edad:<h6 id="edad">{{persona.edad}}</h6></li>
-                            <li>Titulo:<h6 id="telefono">{{persona.titulo}}</h6></li>
+                            <li>Nombre:<h6 id="nombre">{{nombre}}</h6></li>
+                            <li>Edad:<h6 id="edad">{{edad}}</h6></li>
+                            <li>Titulo:<h6 id="telefono">{{titulo}}</h6></li>
                         </ul>
                     </div>
                 </div>
@@ -29,26 +29,50 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="aboutModalLabel">Editar Seccion</h5>
+          <h5 class="modal-title" id="aboutModalLabel">Editar Seccion: Acerca De..</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="limpiarFormulario()"></button>
         </div>
         <div class="modal-body">
             <form [formGroup]="editarAbout">
                 <div class="mb-3">
                   <label for="aboutNombre" class="form-label" >Nombre</label>
-                  <input type="text" class="form-control" id="aboutNombre" placeholder="{{persona.nombre}}" formControlName="edicionNombre">
+                  <input type="text" class="form-control" id="aboutNombre" formControlName="edicionNombre">
+                  <div *ngIf="aboutNombre?.invalid && aboutNombre?.touched">
+                    <div *ngIf="aboutNombre?.errors?.['required']" class="text-danger">
+                      Apellido y Nombre es requerido.
+                    </div>
+                    <div *ngIf="aboutNombre?.errors?.['minlenght']" class="text-danger">
+                      El Apellido y Nombre debe tener un minimo de 5 caracteres.
+                    </div>
+                  </div>
                 </div>
                 <div class="mb-3">
                     <label for="aboutEdad" class="form-label" >Edad</label>
-                    <input type="text" class="form-control" id="aboutEdad" placeholder="{{persona.edad}}" formControlName="edicionEdad">
+                    <input type="text" class="form-control" id="aboutEdad" formControlName="edicionEdad">
+                    <div *ngIf="aboutEdad?.invalid && aboutEdad?.touched">
+                      <div *ngIf="aboutEdad?.errors?.['required']" class="text-danger">
+                        Edad es requerido.
+                      </div>
+                      <div *ngIf="aboutEdad?.errors?.['minlenght']" class="text-danger">
+                       El valor de ingreso supera los valores tolerables. (Max.99 años)
+                      </div>
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label for="aboutTitulo" class="form-label" >Titulo</label>
-                    <input type="text" class="form-control" id="aboutTitulo" placeholder="{{persona.titulo}}" formControlName="edicionTitulo">
+                    <input type="text" class="form-control" id="aboutTitulo"  formControlName="edicionTitulo">
+                    <div *ngIf="aboutTitulo?.invalid && aboutTitulo?.touched">
+                      <div *ngIf="aboutTitulo?.errors?.['required']" class="text-danger">
+                        Titulo es requerido.
+                      </div>
+                      <div *ngIf="aboutTitulo?.errors?.['minlenght']" class="text-danger">
+                       El valor minimo de ingreso es de 5 caracteres. Intente no abreviar el titulo.
+                      </div>
+                    </div>
                   </div>
                   <div class="mb-3">
-                    <label for="aboutTitulo" class="form-label" >Imagen</label>
-                    <input type="text" class="form-control" id="aboutTitulo" placeholder="{{persona.img}}" formControlName="edicionImagen">
+                    <label for="aboutImagen" class="form-label" >Imagen</label>
+                    <input type="text" class="form-control" id="aboutImagen" formControlName="edicionImagen">
                   </div>
               </form>
         </div>

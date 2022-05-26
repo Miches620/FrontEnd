@@ -23,7 +23,7 @@
   flex-direction: column;
   margin-top: 0%;
 }
-button {
+#educacion button {
   position: absolute;
   align-self: flex-end;
 }
@@ -38,4 +38,3 @@ button {
   width: 100%;
   font-size: 14px;
 }
-

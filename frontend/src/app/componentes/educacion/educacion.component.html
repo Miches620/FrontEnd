@@ -1,15 +1,15 @@
 <!-- educacion-->
 <section id="educacion">
-  <div class="container">
-    <h1 class="text-center">Educacion</h1>
+  <div class="container" data-aos="flip-down">
+      <h1 class="text-center">Educacion</h1>
     <div class="row">
       <div *ngFor="let item of educacion" class="col-lg-4 mt-4">
         <div class="card servicesText">
           <div class="card-body">
-            <button *ngIf="usuarioAutentificado" id="editarEducacion">
+            <button *ngIf="this.modoEditor" id="editarEducacion"  data-bs-toggle="modal" data-bs-target="#educacionModalEditar" (click)="mostrarDatos(item)">
               <i class="fas servicesIcon fa-feather"></i>
             </button>
-            <button *ngIf="usuarioAutentificado" id="eliminarEducacion">
+            <button *ngIf="this.modoEditor" id="eliminarEducacion" data-bs-toggle="modal" data-bs-target="#educacionModalBorrar" (click)="almacenarId(item)">
               <i class="fas servicesIcon fa-trash"></i>
             </button>
             <div class="icono">
@@ -29,3 +29,105 @@
     </div>
   </div>
 </section>
+
+
+<!-- Modal Edicion-->
+<div class="modal fade" id="educacionModalEditar" tabindex="-1" aria-labelledby="educacionModalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="educacionModalLabel">Editar Seccion: Educacion</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="limpiarFormulario()"></button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="editarEducacion">
+              <div class="mb-1">
+                <label for="educacionIcono" class="form-label" >Icono</label>
+                <input type="text" class="form-control" id="educacionIcono"  formControlName="edicionIcono">
+                <div *ngIf="eduIcono?.invalid && eduIcono?.touched">
+                  <div *ngIf="eduIcono?.errors?.['required']" class="text-danger">
+                    Icono es requerido.
+                  </div>
+                  <div *ngIf="eduIcono?.errors?.['minlenght']" class="text-danger">
+                    Icono debe tener un minimo de 5 caracteres; Empezando por "fa-""
+                  </div>
+                </div>
+              </div>
+              <div class="mb-1">
+                  <label for="educacionTitulo" class="form-label" >Titulo</label>
+                  <input type="text" class="form-control" id="educacionTitulo"  formControlName="edicionTitulo">
+                  <div *ngIf="eduTitulo?.invalid && eduTitulo?.touched">
+                    <div *ngIf="eduTitulo?.errors?.['required']" class="text-danger">
+                      Titulo es requerido.
+                    </div>
+                    <div *ngIf="eduTitulo?.errors?.['minlenght']" class="text-danger">
+                      Titulo debe tener un minimo de 5 caracteres.
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-1">
+                  <label for="educacionInstitucion" class="form-label" >Institucion</label>
+                  <input type="text" class="form-control" id="educacionInstitucion"  formControlName="edicionInstitucion">
+                  <div *ngIf="eduInstitucion?.invalid && eduInstitucion?.touched">
+                    <div *ngIf="eduInstitucion?.errors?.['required']" class="text-danger">
+                      Institucion es requerido.
+                    </div>
+                    <div *ngIf="eduInstitucion?.errors?.['minlenght']" class="text-danger">
+                      Institucion debe tener un minimo de 5 caracteres.
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-1">
+                  <label for="educacionAnio" class="form-label" >Año</label>
+                  <input type="text" class="form-control" id="educacionAnio"  formControlName="edicionAnio">
+                  <div *ngIf="eduAnio?.invalid && eduAnio?.touched">
+                    <div *ngIf="eduAnio?.errors?.['required']" class="text-danger">
+                      Año es requerido.
+                    </div>
+                    <div *ngIf="eduAnio?.errors?.['minlenght']" class="text-danger">
+                      El valor ingresado debera tener un minimo de 4 digitos.
+                    </div>
+                    <div *ngIf="eduAnio?.errors?.['maxlenght']" class="text-danger">
+                      El valor ingresado debera tener un maximo de 4 digitos.
+                    </div>
+                    <div *ngIf="eduAnio?.errors?.['min']" class="text-danger">
+                      El año ingresado debera pertenecer (por lo menos) al siglo pasado o al actual.
+                    </div>
+                    <div *ngIf="eduAnio?.errors?.['maxlenght']" class="text-danger">
+                      El año ingresado no puede ser mayor al año en transcurso.
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-1">
+                  <label for="educacionWeb" class="form-label" >Web</label>
+                  <input type="text" class="form-control" id="educacionWeb"  formControlName="edicionWeb">
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarEducacion" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarFormulario()">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="guardarCambios()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Borrar-->
+<div class="modal fade" id="educacionModalBorrar" tabindex="-1" aria-labelledby="educacionModalBorrarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Borrar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Esta seguro de que desea continuar?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarBorrarEducacion" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="eliminar()">Aceptar y Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

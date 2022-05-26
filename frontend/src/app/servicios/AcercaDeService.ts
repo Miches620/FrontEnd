@@ -7,16 +7,16 @@ import { Persona } from '../entidades/persona';
   providedIn: 'root',
 })
 export class ObtenerDatosAcercaDe {
-
-  usuarioAutentificado:boolean=false
+url:string="https://argentinaprograma-backend.herokuapp.com/persona"
   constructor(private http: HttpClient) {
-    console.log('el servicio esta corriendo');
+  
   }
 /*AcercaDe*/
-  obtenerAcercaDe(): Observable<any> {
-    return this.http.get('./assets/data/acercaDe.json');
+  obtenerAcercaDe(id:number): Observable<any> {
+    return this.http.get(this.url+'/'+id);
   }
   editarDatosAcercaDe(persona:Persona):Observable<any>{
-    return this.http.post('http://localhost:3000/posts',persona);/*sv de prueba. reemplazar*/
+    return this.http.put(this.url+'/editar/'+1, persona);
   }
+ 
 }

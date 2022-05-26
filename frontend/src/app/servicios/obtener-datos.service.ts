@@ -1,35 +1,19 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Persona} from '../entidades/persona';
+import { Login } from '../entidades/login';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ObtenerDatosService {
-
-  usuarioAutentificado:boolean=false
+  @Output() iniciarSesion: EventEmitter<any> = new EventEmitter()
+  @Output() cerrarSesion: EventEmitter<any> = new EventEmitter()
+url:string="https://argentinaprograma-backend.herokuapp.com/login"
   constructor(private http: HttpClient) {
-    console.log('el servicio esta corriendo');
   }
 
-  obtenerEducacion(): Observable<any> {
-    return this.http.get('./assets/data/educacion.json');
-  }
-
-  obtenerExperiencia(): Observable<any> {
-    return this.http.get('./assets/data/experiencia.json');
-  }
-
-  obtenerHabilidades(): Observable<any> {
-    return this.http.get('./assets/data/habilidades.json');
-  }
-
-  obtenerProyectos(): Observable<any> {
-    return this.http.get('./assets/data/proyectos.json');
-  }
-
-  obtenerLogin(): Observable<any> {
-    return this.http.get('./assets/data/login.json');
+  obtenerAccesoDeEditor(login:Login):Observable<any>{
+    return this.http.post(this.url,login);
   }
 }

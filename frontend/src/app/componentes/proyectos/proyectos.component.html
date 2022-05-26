@@ -2,8 +2,8 @@
 <section id="proyectos">
     <div class="container mt-3">
         <h1 class="text-center">Proyectos 
-          <button *ngIf="usuarioAutentificado" id="editarProyectos"><i class='fas servicesIcon fa-feather'></i></button>
-          <button *ngIf="usuarioAutentificado" id="eliminarProyectos"><i class='fas servicesIcon fa-trash'></i></button>
+          <button  *ngIf="this.modoEditor" id="editarProyectos" data-bs-toggle="modal" data-bs-target="#proyectoModalEditar"><i class='fas servicesIcon fa-feather'></i></button>
+          <button  *ngIf="this.modoEditor" id="eliminarProyectos" data-bs-toggle="modal" data-bs-target="#ProyectosModalBorrar"><i class='fas servicesIcon fa-trash'></i></button>
         </h1>
         <div class="row">
             <div *ngFor="let item of proyectos" class="portaproyecto col-lg-4 mt-4">
@@ -23,3 +23,134 @@
         </div>
       </div>
 </section>
+
+
+<!-- Modal Edicion Proyectos parte 1-->
+<div class="modal fade" id="proyectoModalEditar" tabindex="-1" aria-labelledby="proyectoModalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="proyectoModalLabel">Editar Seccion: Proyectos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reiniciarForm()" ></button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="editarProyectos">
+              <div class="mb-1">
+                <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
+                    <div *ngFor="let item of proyectos">
+                      <input type="radio" id="habItem" name="drone" value="{{item.proyecto}}" 
+                            (click)="almacenarItem(item)">
+                      <label for="habItem">{{item.proyecto}}</label>
+                    </div>
+                  </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarProyectos" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reiniciarForm()" >Cerrar</button>
+        <button *ngIf="boton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#proyectoModalEditar2" (click)="editarPro()">Siguiente</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edicion Proyectos parte 2-->
+<div class="modal fade" id="proyectoModalEditar2" tabindex="-1" aria-labelledby="proyectoModalEditarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="proyectoModalLabel">Editar Seccion: Proyectos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="editarProyectos">
+              <div class="mb-1">
+                <label for="proyectoImg" class="form-label" >Logo de Empresa</label>
+                <input type="text" class="form-control" id="proyectoImg"  formControlName="edicionImg">
+                <div *ngIf="proImg?.invalid && proImg?.touched">
+                  <div *ngIf="proImg?.errors?.['minlenght']" class="text-danger">
+                    Debera especificar la ruta de la imagen mediante web ('https://') o link local.
+                  </div>
+                </div>
+              </div>
+              <div class="mb-1">
+                  <label for="proyectoProyecto" class="form-label" >Nombre del Proyecto</label>
+                  <input type="text" class="form-control" id="proyectoProyecto"  formControlName="edicionProyecto">
+                  <div *ngIf="proProyecto?.invalid && proProyecto?.touched">
+                      <div *ngIf="proProyecto?.errors?.['required']" class="text-danger">
+                        Nombre del Proyecto es requerido.
+                      </div>
+                      <div *ngIf="proProyecto?.errors?.['minlenght']" class="text-danger">
+                        El nombre debera tener un minimo de 5 caracteres.
+                      </div>
+                    </div>
+                </div>
+                <div class="mb-1">
+                  <label for="proyectoDescripcion" class="form-label" >Descripcion</label>
+                  <input type="text" class="form-control" id="proyectoDescripcion"  formControlName="edicionDescripcion">
+                  <div *ngIf="proDescripcion?.invalid && proDescripcion?.touched">
+                      <div *ngIf="proProyecto?.errors?.['required']" class="text-danger">
+                        Descripcion es requerida.
+                      </div>
+                      <div *ngIf="proDescripcion?.errors?.['minlenght']" class="text-danger">
+                        La descripcion debera tener al menos 5 caracteres.
+                      </div>
+                    </div>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#proyectoModalEditar">Volver</button>
+        <button type="button" class="btn btn-primary" (click)="guardarProyecto()">Guardar</button>
+        <button hidden id="cerrarEditarProyecto" type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Modal Borrar: Proyectps parte 1-->
+ <div class="modal fade" id="ProyectosModalBorrar" tabindex="-1" aria-labelledby="ProyectosModalBorrarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="ProyectosModalLabel">Borrar: Proyectos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reiniciarForm()"></button>
+      </div>
+      <div class="modal-body">
+          <form>
+              <div class="mb-1">
+                <label class="form-label" ><b>Por favor seleccione un item para continuar:</b></label>
+                <div *ngFor="let item of proyectos">
+                  <input type="radio" id="proItem" name="drone" value="{{item.proyecto}}" 
+                        (click)="almacenarItem(item)">
+                  <label for="proItem">{{item.proyecto}}</label>
+                </div>
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarProyecto" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reiniciarForm()">Cancelar</button>
+        <button *ngIf="boton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ProyectosModalBorrar2">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Borrar: Proyectos parte 2-->
+<div class="modal fade" id="ProyectosModalBorrar2" tabindex="-1" aria-labelledby="ProyectosModalBorrarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Borrar</h5>
+        <button type="button" id="cerrarBorrarProyectos" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Esta seguro de que desea continuar?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarBorrarProyectos" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="eliminarProyecto()">Aceptar y Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
