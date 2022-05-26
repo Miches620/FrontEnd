@@ -104,7 +104,6 @@ else{
 
   almacenarId(edu:Educacion){
     this.idActual=edu['id'];
-    console.log(this.idActual);
   }
 
   eliminar(){
