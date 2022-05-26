@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EducacionService {
-  url:string="http://localhost:8080/educacion"
+  url:string="https://argentinaprograma-backend.herokuapp.com/educacion"
   constructor(private http: HttpClient) { }
 
   /*Educacion*/

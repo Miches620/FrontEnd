@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ExperienciaService {
-  url:string="http://localhost:8080/experiencia"
+  url:string="https://argentinaprograma-backend.herokuapp.com/experiencia"
   constructor(private http: HttpClient) { }
 
   /*Experiencia*/

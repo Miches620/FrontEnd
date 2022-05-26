@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HabilidadesService {
-  url1:string="http://localhost:8080/hBlandas"
-  url2:string="http://localhost:8080/hDuras"
+  url1:string="https://argentinaprograma-backend.herokuapp.com/hBlandas"
+  url2:string="https://argentinaprograma-backend.herokuapp.com/hDuras"
   constructor(private http: HttpClient) { }
 
   /*Habilidades*/
